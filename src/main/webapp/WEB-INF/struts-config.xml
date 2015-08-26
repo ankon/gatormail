@@ -412,15 +412,18 @@
 
     </plug-in>
 
+    <plug-in className="edu.ufl.osg.webmail.prefs.TransientPrefsPlugIn"/>
+
     <!--
     <plug-in className="edu.ufl.osg.webmail.prefs.ReadOnlyPrefsPlugIn">
         <set-property property="prefsFileName" value="/edu/ufl/osg/webmail/prefs/ReadOnlyPrefs.properties"/>
     </plug-in>
     -->
-    <!--<plug-in className="edu.ufl.osg.webmail.prefs.TransientPrefsPlugIn"/>-->
 
+    <!--
     <plug-in className="edu.ufl.osg.webmail.prefs.UFDBPrefsPlugIn">
         <set-property property="contextName" value="java:comp/env/jdbc/osg_public"/>
         <set-property property="passwordEncoded" value="base64"/>
     </plug-in>
+    -->
 </struts-config>
