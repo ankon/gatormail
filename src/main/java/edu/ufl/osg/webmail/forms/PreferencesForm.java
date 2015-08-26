@@ -19,7 +19,8 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -39,7 +40,7 @@ import java.net.URL;
  * @version $Revision: 1.8 $
  */
 public class PreferencesForm extends ActionForm {
-    private static final Logger logger = Logger.getLogger(PreferencesForm.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(PreferencesForm.class);
 
     private String action;
 

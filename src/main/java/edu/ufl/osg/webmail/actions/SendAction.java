@@ -30,13 +30,14 @@ import edu.ufl.osg.webmail.data.AttachList;
 import edu.ufl.osg.webmail.data.AttachObj;
 import edu.ufl.osg.webmail.forms.ComposeForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.BodyPart;
 import javax.mail.Folder;
@@ -72,7 +73,7 @@ import java.util.Properties;
  * @version $Revision: 1.6 $
  */
 public class SendAction extends Action {
-    private static final Logger logger = Logger.getLogger(SendAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(SendAction.class);
     // start looking to wrap composed message body a little before the limit
     // RFC2646 suggests line length of 66 characters
     private static final int WRAP_WIDTH = 66; //Constants.COMPOSE_BODY_WIDTH - 4;

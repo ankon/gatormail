@@ -20,11 +20,12 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.LookupDispatchAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +39,7 @@ import java.util.Map;
  * @version $Revision: 1.2 $
  */
 public class ModifyFolderAction extends LookupDispatchAction {
-    private static final Logger logger = Logger.getLogger(ModifyFolderAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ModifyFolderAction.class);
     private Map map = new HashMap();
 
     public ModifyFolderAction() {

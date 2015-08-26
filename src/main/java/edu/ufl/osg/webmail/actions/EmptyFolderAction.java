@@ -22,13 +22,15 @@ package edu.ufl.osg.webmail.actions;
 import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.forms.EmptyFolderForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.LookupDispatchAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.mail.Flags;
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -50,7 +52,7 @@ import java.util.Map;
  * @since Oct 7, 2005
  */
 public class EmptyFolderAction extends LookupDispatchAction {
-    private static final Logger logger = Logger.getLogger(EmptyFolderAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(EmptyFolderAction.class);
     private Map map;
     Folder trashFolder = null;
 

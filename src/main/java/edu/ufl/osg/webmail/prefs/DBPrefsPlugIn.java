@@ -22,7 +22,8 @@ package edu.ufl.osg.webmail.prefs;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.config.ModuleConfig;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.naming.Context;
@@ -52,7 +53,7 @@ import java.io.UnsupportedEncodingException;
  * @version $Revision: 1.4 $
  */
 public class DBPrefsPlugIn implements PlugIn, DBPrefsProvider.ConnectionProvider {
-    private static final Logger logger = Logger.getLogger(DBPrefsPlugIn.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(DBPrefsPlugIn.class);
 
     private ActionServlet servlet;
     private ModuleConfig config;

@@ -20,7 +20,8 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.internet.InternetAddress;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ import java.util.ListIterator;
  * @version $Revision: 1.2 $
  */
 public final class AddressList implements List, java.io.Serializable {
-    private static final Logger logger = Logger.getLogger(AddressList.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AddressList.class);
     private static Comparator addressSort = new AddressSort();
 
     private String permId;

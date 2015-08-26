@@ -27,12 +27,13 @@ import edu.ufl.osg.webmail.data.AttachList;
 import edu.ufl.osg.webmail.data.AttachObj;
 import edu.ufl.osg.webmail.forms.ComposeForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -48,7 +49,7 @@ import javax.servlet.http.HttpSession;
  * @version $Revision: 1.2 $
  */
 public class ForwardAction extends MessageAction {
-    private static final Logger logger = Logger.getLogger(ForwardAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ForwardAction.class);
     private static final String FWD = "Fwd: ";
     private static final String FWD_CAPS = FWD.toUpperCase();
 

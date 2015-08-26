@@ -31,13 +31,14 @@ import edu.ufl.osg.webmail.util.Util;
 import edu.ufl.osg.webmail.util.RequestTimerFilter;
 import edu.ufl.osg.webmail.util.FolderCloserFilter;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.AuthenticationFailedException;
 import javax.mail.Folder;
@@ -62,7 +63,7 @@ import java.util.Properties;
  * @version $Revision: 1.9 $
  */
 public class LoginAction extends Action {
-    private static final Logger logger = Logger.getLogger(LoginAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(LoginAction.class);
 
     /**
      * Process a user's login attempt. If the login is successful then a

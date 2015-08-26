@@ -28,7 +28,6 @@ import edu.ufl.osg.webmail.data.DAOFactory;
 import edu.ufl.osg.webmail.formatters.SizeFormat;
 import edu.ufl.osg.webmail.forms.ComposeForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -36,6 +35,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.LookupDispatchAction;
 import org.apache.struts.upload.FormFile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -51,7 +52,7 @@ import java.util.Map;
  * @version $Revision: 1.4 $
  */
 public class ModifyComposeAction extends LookupDispatchAction {
-    private static final Logger logger = Logger.getLogger(ModifyComposeAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ModifyComposeAction.class);
     private Map map = new HashMap();
 
     public ModifyComposeAction() {

@@ -25,13 +25,14 @@ import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.beans.ResultBean;
 import edu.ufl.osg.webmail.forms.NewFolderForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionError;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.mail.FolderNotFoundException;
@@ -46,7 +47,7 @@ import javax.servlet.http.HttpSession;
  * @version $Revision: 1.5 $
  */
 public class CreateFolderAction extends Action {
-    private static final Logger logger = Logger.getLogger(CreateFolderAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(CreateFolderAction.class);
 
     /**
      * Sets up the request enviroment for the folder view. The current folder

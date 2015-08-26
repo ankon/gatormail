@@ -21,7 +21,6 @@
 package edu.ufl.osg.webmail;
 
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -31,6 +30,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ExceptionHandler;
 import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.util.ModuleException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +43,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Revision: 1.3 $
  */
 public class ForwardingExceptionHandler extends ExceptionHandler {
-    private static final Logger logger = Logger.getLogger(ForwardingExceptionHandler.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ForwardingExceptionHandler.class);
 
     public ActionForward execute(final Exception ex, final ExceptionConfig ae, final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws ServletException {
         //        System.out.println("HERE: " + ae.getPath());

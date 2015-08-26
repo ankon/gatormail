@@ -25,12 +25,13 @@ import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.prefs.PreferencesProvider;
 import edu.ufl.osg.webmail.forms.ComposeForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Address;
 import javax.mail.Folder;
@@ -58,7 +59,7 @@ import java.util.StringTokenizer;
  * @version $Revision: 1.3 $
  */
 public class ReplyAction extends MessageAction {
-    private static final Logger logger = Logger.getLogger(ReplyAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ReplyAction.class);
 
     /**
      * Composes an email

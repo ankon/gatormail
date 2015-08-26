@@ -21,12 +21,13 @@ package edu.ufl.osg.webmail.actions;
 
 import edu.ufl.osg.webmail.User;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Address;
 import javax.mail.Folder;
@@ -50,7 +51,7 @@ import java.util.Arrays;
  * @version $Revision: 1.2 $
  */
 public class ReportHamAction extends MessageAction {
-    private static final Logger logger = Logger.getLogger(ReportHamAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ReportHamAction.class);
     private static final String FWD = "Fwd: ";
 
     /**

@@ -24,13 +24,14 @@ import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.beans.ResultBean;
 import edu.ufl.osg.webmail.forms.MoveCopyForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Flags;
 import javax.mail.Folder;
@@ -47,7 +48,7 @@ import java.util.List;
  * @version $Revision: 1.3 $
  */
 public class MoveCopyAction extends Action {
-    private static final Logger logger = Logger.getLogger(MoveCopyAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(MoveCopyAction.class);
 
     /**
      * Move or copy a message from one folder to another.

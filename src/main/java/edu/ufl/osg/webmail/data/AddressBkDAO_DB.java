@@ -19,7 +19,8 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -49,7 +50,7 @@ import java.util.Collection;
  * @version $Revision: 1.5 $
  */
 public class AddressBkDAO_DB implements AddressBkDAO {
-    private static final Logger logger = Logger.getLogger(AddressBkDAO_DB.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AddressBkDAO_DB.class);
     // use DataSource for DB connections? If not, defaults to DriverManager
     private boolean useDataSource;
     // connect with DriverManager using name + password?

@@ -20,10 +20,11 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,7 +36,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version $Revision: 1.4 $
  */
 public final class FolderActionForm extends FolderForm {
-    private static final Logger logger = Logger.getLogger(FolderActionForm.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(FolderActionForm.class);
 
     /** the action to be performed */
     private String action;

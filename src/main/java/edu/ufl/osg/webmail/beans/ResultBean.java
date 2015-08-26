@@ -20,7 +20,8 @@
 
 package edu.ufl.osg.webmail.beans;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.MessageFormat;
 
@@ -31,7 +32,7 @@ import java.text.MessageFormat;
  * @version $Revision: 1.2 $
  */
 public class ResultBean {
-    private static final Logger logger = Logger.getLogger(ResultBean.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ResultBean.class);
 
     private String message;
 

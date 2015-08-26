@@ -21,9 +21,10 @@
 package edu.ufl.osg.webmail.forms;
 
 import edu.ufl.osg.webmail.Constants;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
@@ -37,7 +38,7 @@ import java.io.UnsupportedEncodingException;
  * @version $Revision: 1.3 $
  */
 final class FormsUtil {
-    private static final Logger logger = Logger.getLogger(FormsUtil.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(FormsUtil.class);
 
     /**
      * Validates a name and email address.

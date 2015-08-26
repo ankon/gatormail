@@ -1,6 +1,7 @@
 package edu.ufl.osg.webmail.util;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterConfig;
@@ -21,7 +22,7 @@ import edu.ufl.osg.webmail.User;
  * @author Sandy McArthur
  */
 public class LogRemoteIpAddressFilter implements Filter {
-    private static final Logger logger = Logger.getLogger(LogRemoteIpAddressFilter.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(LogRemoteIpAddressFilter.class);
 
     public void init(final FilterConfig config) throws ServletException {
     }

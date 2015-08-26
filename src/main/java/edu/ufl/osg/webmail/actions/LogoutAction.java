@@ -27,11 +27,12 @@ import edu.ufl.osg.webmail.data.AttachDAO;
 import edu.ufl.osg.webmail.data.AttachList;
 import edu.ufl.osg.webmail.data.DAOFactory;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.mail.Service;
@@ -51,7 +52,7 @@ import java.util.Enumeration;
  * @version $Revision: 1.2 $
  */
 public class LogoutAction extends Action {
-    private static final Logger logger = Logger.getLogger(LogoutAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(LogoutAction.class);
 
     /**
      * Logs the user out by closing any JavaMail objects on the servlet session

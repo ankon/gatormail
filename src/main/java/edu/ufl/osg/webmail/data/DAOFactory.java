@@ -20,7 +20,6 @@
 package edu.ufl.osg.webmail.data;
 
 import edu.ufl.osg.webmail.SessionProvider;
-import org.apache.log4j.Logger;
 
 /**
  * The factory class that maintains and presents the singleton DAOs.
@@ -30,7 +29,6 @@ import org.apache.log4j.Logger;
  * @deprecated Try to start using {@link org.apache.struts.action.PlugIn Struts PlugIns} and putting providers in the {@link javax.servlet.ServletContext application context}.
  */
 public class DAOFactory {
-    private static final Logger logger = Logger.getLogger(DAOFactory.class.getName());
     private static DAOFactory daoFactory;
     private AttachDAO attachDAO;
     private AddressBkDAO addressBkDAO;

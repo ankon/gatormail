@@ -33,11 +33,12 @@ import edu.ufl.osg.webmail.data.AddressList;
 import edu.ufl.osg.webmail.data.AttachDAOException;
 import edu.ufl.osg.webmail.data.AttachList;
 import edu.ufl.osg.webmail.data.DAOFactory;
-import org.apache.log4j.Logger;
 import org.apache.struts.tiles.ComponentDefinition;
 import org.apache.struts.tiles.DefinitionsFactory;
 import org.apache.struts.tiles.DefinitionsFactoryException;
 import org.apache.struts.tiles.TilesUtilImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Address;
 import javax.mail.BodyPart;
@@ -78,7 +79,7 @@ import java.util.Iterator;
  * @version $Revision: 1.8 $
  */
 public class Util {
-    private static final Logger logger = Logger.getLogger(Util.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(Util.class);
 
     private static final char QUOTE = '"';
 

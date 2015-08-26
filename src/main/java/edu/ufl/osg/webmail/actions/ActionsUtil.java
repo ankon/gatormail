@@ -45,10 +45,11 @@ import edu.ufl.osg.webmail.util.Util.SubjectSortU;
 import edu.ufl.osg.webmail.util.Util.ToSort;
 import edu.ufl.osg.webmail.util.Util.ToSortU;
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Address;
 import javax.mail.Folder;
@@ -81,7 +82,7 @@ import java.util.TreeSet;
  * @version $Revision: 1.22 $
  */
 final class ActionsUtil {
-    private static final Logger logger = Logger.getLogger(ActionsUtil.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ActionsUtil.class);
 
     private static final String MAIL_STORE_GROUP = "mailStore";
     private static final String[] MAIL_STORE_CACHE_GROUP = new String[] {MAIL_STORE_GROUP};

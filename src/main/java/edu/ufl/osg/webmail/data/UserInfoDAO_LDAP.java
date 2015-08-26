@@ -23,7 +23,8 @@ import edu.ufl.osg.webmail.User;
 import org.apache.commons.pool.BasePoolableObjectFactory;
 import org.apache.commons.pool.impl.GenericObjectPool;
 import org.apache.commons.pool.impl.StackObjectPool;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeUtility;
@@ -55,7 +56,7 @@ import java.util.Properties;
  * @version $Revision: 1.7 $
  */
 public class UserInfoDAO_LDAP implements UserInfoDAO {
-    private static final Logger logger = Logger.getLogger(UserInfoDAO_LDAP.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(UserInfoDAO_LDAP.class);
 
     private Hashtable env;
     private boolean piercePrivacy;

@@ -20,7 +20,8 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.activation.DataHandler;
 import javax.activation.FileDataSource;
@@ -39,7 +40,7 @@ import java.util.Properties;
  * @version $Revision: 1.4 $
  */
 public class AttachDAO_FILE implements AttachDAO {
-    private static final Logger logger = Logger.getLogger(AttachDAO_FILE.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AttachDAO_FILE.class);
     private static final String ATTACH_PREFIX = "att";
 
     private String basePath;

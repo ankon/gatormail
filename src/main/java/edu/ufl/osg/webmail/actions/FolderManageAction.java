@@ -21,11 +21,12 @@
 package edu.ufl.osg.webmail.actions;
 
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +42,7 @@ import java.util.Set;
  * @version $Revision: 1.4 $
  */
 public class FolderManageAction extends Action {
-    private static final Logger logger = Logger.getLogger(FolderManageAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(FolderManageAction.class);
 
     /**
      * Sets up the request for folder options view.

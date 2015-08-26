@@ -20,7 +20,8 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -36,7 +37,7 @@ import java.util.StringTokenizer;
  * @version $Revision: 1.2 $
  */
 public final class AttachObj implements java.io.Serializable {
-    private static final Logger logger = Logger.getLogger(AttachObj.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AttachObj.class);
 
     private String fileName;
     private String tempName;

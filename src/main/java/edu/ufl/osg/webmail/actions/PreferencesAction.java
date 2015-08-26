@@ -28,11 +28,12 @@ import edu.ufl.osg.webmail.forms.PreferencesForm;
 import edu.ufl.osg.webmail.prefs.PreferencesProvider;
 import edu.ufl.osg.webmail.util.Util;
 import edu.ufl.osg.webmail.util.FolderCloserFilter;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.mail.Store;
@@ -58,7 +59,7 @@ import java.io.StringReader;
  * @version $Revision: 1.8 $
  */
 public final class PreferencesAction extends Action {
-    private static final Logger logger = Logger.getLogger(PreferencesAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(PreferencesAction.class);
 
     public final ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws Exception {
         logger.debug("=== PreferencesAction.execute() begin ===");

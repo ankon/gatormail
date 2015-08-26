@@ -21,7 +21,8 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 
@@ -35,7 +36,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version $Revision: 1.5 $
  */
 public final class NewFolderForm extends FolderForm {
-    private static final Logger logger = Logger.getLogger(NewFolderForm.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(NewFolderForm.class);
 
     /** Holds value of property newFolder. */
     private String newFolder;

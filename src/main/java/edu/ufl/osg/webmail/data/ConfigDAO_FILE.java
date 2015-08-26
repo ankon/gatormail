@@ -19,7 +19,8 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -31,7 +32,7 @@ import java.util.Properties;
  * @version $Revision: 1.3 $
  */
 public class ConfigDAO_FILE implements ConfigDAO {
-    private static final Logger logger = Logger.getLogger(ConfigDAO_FILE.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ConfigDAO_FILE.class);
     private static final String propPath = "/gatormail.properties";
     private Properties props;
 

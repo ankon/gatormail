@@ -22,7 +22,8 @@ package edu.ufl.osg.webmail;
 
 import edu.ufl.osg.webmail.data.DAOFactory;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Authenticator;
 import javax.mail.NoSuchProviderException;
@@ -46,7 +47,7 @@ import java.util.List;
  * @version $Revision: 1.6 $
  */
 public class User implements Serializable, HttpSessionBindingListener {
-    private static final Logger logger = Logger.getLogger(User.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(User.class);
 
     private String username;
     private String password;

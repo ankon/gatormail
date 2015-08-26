@@ -21,7 +21,8 @@
 package edu.ufl.osg.webmail.prefs;
 
 import edu.ufl.osg.webmail.User;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpSession;
 import java.lang.ref.Reference;
@@ -42,7 +43,7 @@ import java.util.WeakHashMap;
  * @version $Revision: 1.6 $
  */
 public class DBPrefsProvider implements PreferencesProvider {
-    private static final Logger logger = Logger.getLogger(DBPrefsProvider.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(DBPrefsProvider.class);
 
     /**
      * {@link HttpSession} key for the {@link Long} when the current user's

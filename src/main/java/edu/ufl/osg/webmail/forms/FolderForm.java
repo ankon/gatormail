@@ -21,10 +21,11 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,7 +36,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version $Revision: 1.6 $
  */
 public class FolderForm extends ActionForm {
-    private static final Logger logger = Logger.getLogger(FolderForm.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(FolderForm.class);
     private static final Integer ZERO = new Integer(0);
     private static final Integer ONE = new Integer(1);
     private static final String DATEDN = (String)"dateDN";

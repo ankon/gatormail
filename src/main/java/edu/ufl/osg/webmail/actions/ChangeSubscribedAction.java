@@ -25,13 +25,14 @@ import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.beans.ResultBean;
 import edu.ufl.osg.webmail.forms.FolderForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.servlet.http.HttpServletRequest;
@@ -44,7 +45,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Revision: 1.5 $
  */
 public class ChangeSubscribedAction extends Action {
-    private static final Logger logger = Logger.getLogger(ChangeSubscribedAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ChangeSubscribedAction.class);
 
     /**
      * Makes folder subscribed.

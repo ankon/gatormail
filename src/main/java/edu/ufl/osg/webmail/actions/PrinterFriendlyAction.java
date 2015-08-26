@@ -21,10 +21,11 @@
 package edu.ufl.osg.webmail.actions;
 
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Folder;
 import javax.mail.Message;
@@ -38,7 +39,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Revision: 1.2 $
  */
 public class PrinterFriendlyAction extends MessageAction {
-    private static final Logger logger = Logger.getLogger(PrinterFriendlyAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(PrinterFriendlyAction.class);
 
     /**
      * Sets up the request enviroment for the message view. The current Folder

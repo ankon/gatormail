@@ -25,7 +25,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionError;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,7 +51,7 @@ import java.net.SocketException;
  * @version $Revision: 1.3 $
  */
 public class RawMessageAction extends Action {
-    private static final Logger logger = Logger.getLogger(RawMessageAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(RawMessageAction.class);
     private static final byte[] CRLF_BYTES = "\r\n".getBytes(); // CR LF
     private static final byte[] COLON_BYTES = ": ".getBytes();
 

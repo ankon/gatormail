@@ -20,7 +20,8 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -39,7 +40,7 @@ import java.util.ListIterator;
  * @version $Revision: 1.3 $
  */
 public final class AttachList implements List, java.io.Serializable {
-    private static final Logger logger = Logger.getLogger(AttachList.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AttachList.class);
     private static final String DEFAULT_ATTACHMENT_NAME = "attachment";
     private static final String DEFAULT_FORWARD_NAME = "message";
 

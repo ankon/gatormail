@@ -20,10 +20,11 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -34,7 +35,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version $Revision: 1.2 $
  */
 public final class AddressForm extends ActionForm {
-    private static final Logger logger = Logger.getLogger(AddressForm.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(AddressForm.class);
     private String name;
     private String email;
 

@@ -24,12 +24,13 @@ import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.beans.ResultBean;
 import edu.ufl.osg.webmail.forms.DeleteMessagesForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Flags.Flag;
 import javax.mail.Folder;
@@ -50,7 +51,7 @@ import java.util.List;
  * @version $Revision: 1.4 $
  */
 public class DeleteMessagesAction extends FolderAction {
-    private static final Logger logger = Logger.getLogger(DeleteMessagesAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(DeleteMessagesAction.class);
     private static Comparator deleteMessageSort = new DeleteMessageSort();
 
     /**

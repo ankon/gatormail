@@ -27,11 +27,12 @@ import edu.ufl.osg.webmail.User;
 import edu.ufl.osg.webmail.forms.FolderForm;
 import edu.ufl.osg.webmail.prefs.PreferencesProvider;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Address;
 import javax.mail.FetchProfile;
@@ -73,7 +74,7 @@ import java.util.Set;
  * @version $Revision: 1.17 $
  */
 public class FolderAction extends Action {
-    private static final Logger logger = Logger.getLogger(FolderAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(FolderAction.class);
 
     private static final List filterChoices;
 

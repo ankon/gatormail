@@ -27,13 +27,14 @@ import edu.ufl.osg.webmail.data.ConfigDAO;
 import edu.ufl.osg.webmail.data.DAOFactory;
 import edu.ufl.osg.webmail.forms.AddressesForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.internet.InternetAddress;
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +50,7 @@ import java.util.List;
  * @version $Revision: 1.4 $
  */
 public class SaveAddressesAction extends Action {
-    private static final Logger logger = Logger.getLogger(SaveAddressesAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(SaveAddressesAction.class);
 
     /**
      * Saves an addressbook entry.

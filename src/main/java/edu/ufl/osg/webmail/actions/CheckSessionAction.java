@@ -20,11 +20,12 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +37,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Revision: 1.2 $
  */
 public class CheckSessionAction extends Action {
-    private static final Logger logger = Logger.getLogger(CheckSessionAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(CheckSessionAction.class);
 
     /**
      * Basic action that just checks the session

@@ -21,11 +21,12 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,7 +45,7 @@ import java.util.List;
  * @deprecated Shouldn't be needed since we moved away from WebShere.
  */
 public class CheckCookiesAction extends Action {
-    private static final Logger logger = Logger.getLogger(CheckCookiesAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(CheckCookiesAction.class);
 
     /**
      * Verifyies that the user has a valid http session.

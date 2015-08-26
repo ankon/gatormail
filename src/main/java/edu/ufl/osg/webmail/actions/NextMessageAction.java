@@ -23,10 +23,11 @@ package edu.ufl.osg.webmail.actions;
 
 import edu.ufl.osg.webmail.forms.FolderForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.mail.Flags;
 import javax.mail.Folder;
@@ -44,7 +45,7 @@ import java.util.List;
  * @version $Revision: 1.4 $
  */
 public class NextMessageAction extends FolderAction {
-    private static final Logger logger = Logger.getLogger(NextMessageAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(NextMessageAction.class);
 
     /**
      * Sets up the request enviroment for the message view. The current Folder

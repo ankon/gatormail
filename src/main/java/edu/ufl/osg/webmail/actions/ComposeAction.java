@@ -25,11 +25,12 @@ import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.prefs.PreferencesProvider;
 import edu.ufl.osg.webmail.forms.ComposeForm;
 import edu.ufl.osg.webmail.util.Util;
-import org.apache.log4j.Logger;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -43,7 +44,7 @@ import javax.servlet.http.HttpSession;
  * @version $Revision: 1.2 $
  */
 public class ComposeAction extends Action {
-    private static final Logger logger = Logger.getLogger(ComposeAction.class.getName());
+    private static final Logger logger = LoggerFactory.getLogger(ComposeAction.class);
 
     /**
      * Composes an email. This is the first page view of a "compose message"
