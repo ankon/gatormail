@@ -15,7 +15,8 @@
                  java.util.List,
                  java.util.Arrays,
                  javax.mail.BodyPart,
-                 javax.mail.Part"%>
+                 javax.mail.Part,
+                 javax.servlet.jsp.JspWriter"%>
 <%@page contentType="text/html"%>
 <html>
 <head>
