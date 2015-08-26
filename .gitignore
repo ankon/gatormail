@@ -1,5 +1,4 @@
-build
-dist
+target
 .classpath
 .settings/
 .project
