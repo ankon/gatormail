@@ -19,15 +19,7 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.ActionError;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Arrays;
 
 import javax.mail.Address;
 import javax.mail.Folder;
@@ -41,7 +33,17 @@ import javax.mail.internet.MimeMultipart;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
+
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Reports a message to the false positve address.

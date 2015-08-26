@@ -20,10 +20,6 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.mail.internet.InternetAddress;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -31,6 +27,11 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
+import javax.mail.internet.InternetAddress;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is the Container for holding InternetAddresses. It is self-sorting.

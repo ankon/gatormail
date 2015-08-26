@@ -20,10 +20,10 @@
 
 package edu.ufl.osg.webmail.beans;
 
+import java.text.MessageFormat;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.text.MessageFormat;
 
 /**
  * Bean for displaying the result(s) of an action.

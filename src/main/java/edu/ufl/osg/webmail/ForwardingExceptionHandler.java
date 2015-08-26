@@ -20,7 +20,10 @@
 
 package edu.ufl.osg.webmail;
 
-import edu.ufl.osg.webmail.util.Util;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -33,9 +36,7 @@ import org.apache.struts.util.ModuleException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import edu.ufl.osg.webmail.util.Util;
 
 
 /**

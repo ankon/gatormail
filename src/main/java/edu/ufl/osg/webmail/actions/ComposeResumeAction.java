@@ -20,8 +20,10 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.forms.ComposeForm;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -29,9 +31,8 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.forms.ComposeForm;
 
 /**
  * Resumes composing a message, using values saved from the expired session.

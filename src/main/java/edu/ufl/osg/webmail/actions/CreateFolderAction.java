@@ -21,24 +21,25 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.beans.ResultBean;
-import edu.ufl.osg.webmail.forms.NewFolderForm;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionError;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import javax.mail.Folder;
 import javax.mail.FolderNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.beans.ResultBean;
+import edu.ufl.osg.webmail.forms.NewFolderForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Creates a new folder.

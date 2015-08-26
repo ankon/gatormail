@@ -21,11 +21,42 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import com.sun.mail.imap.IMAPFolder;
-import com.sun.mail.iap.CommandFailedException;
-import com.opensymphony.oscache.web.ServletCacheAdministrator;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Set;
+import java.util.TreeSet;
+
+import javax.mail.Address;
+import javax.mail.Folder;
+import javax.mail.FolderNotFoundException;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.Quota;
+import javax.mail.Session;
+import javax.mail.Store;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.opensymphony.oscache.base.Cache;
 import com.opensymphony.oscache.base.NeedsRefreshException;
+import com.opensymphony.oscache.web.ServletCacheAdministrator;
+import com.sun.mail.iap.CommandFailedException;
+import com.sun.mail.imap.IMAPFolder;
+
 import edu.ufl.osg.webmail.ComposeSavedException;
 import edu.ufl.osg.webmail.Constants;
 import edu.ufl.osg.webmail.InvalidSessionException;
@@ -44,34 +75,6 @@ import edu.ufl.osg.webmail.util.Util.SubjectSort;
 import edu.ufl.osg.webmail.util.Util.SubjectSortU;
 import edu.ufl.osg.webmail.util.Util.ToSort;
 import edu.ufl.osg.webmail.util.Util.ToSortU;
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.struts.action.ActionError;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.mail.Address;
-import javax.mail.Folder;
-import javax.mail.FolderNotFoundException;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.NoSuchProviderException;
-import javax.mail.Quota;
-import javax.mail.Session;
-import javax.mail.Store;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Package local util class.

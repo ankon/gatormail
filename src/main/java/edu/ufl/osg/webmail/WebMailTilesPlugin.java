@@ -20,6 +20,10 @@
 
 package edu.ufl.osg.webmail;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.tiles.ComponentDefinition;
@@ -29,10 +33,6 @@ import org.apache.struts.tiles.DefinitionsFactoryException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesPlugin;
 import org.apache.struts.tiles.TilesUtilImpl;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 
 /**
  * The extends {@link org.apache.struts.tiles.TilesPlugin} to wrap the

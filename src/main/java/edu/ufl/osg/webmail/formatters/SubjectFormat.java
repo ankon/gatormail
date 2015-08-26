@@ -20,12 +20,12 @@
 
 package edu.ufl.osg.webmail.formatters;
 
-import org.apache.struts.util.ResponseUtils;
-
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.ParsePosition;
 import java.util.Locale;
+
+import org.apache.struts.util.ResponseUtils;
 
 
 /**

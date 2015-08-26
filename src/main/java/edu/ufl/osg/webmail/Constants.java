@@ -20,11 +20,11 @@
 
 package edu.ufl.osg.webmail;
 
-import edu.ufl.osg.webmail.util.Util;
-
-import javax.servlet.http.HttpSession;
 import javax.mail.Folder;
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpSession;
+
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Constants for the WebMail application.

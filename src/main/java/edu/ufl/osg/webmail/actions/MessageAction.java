@@ -21,8 +21,15 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.forms.FolderForm;
-import edu.ufl.osg.webmail.util.Util;
+import java.util.List;
+
+import javax.mail.Flags;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -31,13 +38,8 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.List;
+import edu.ufl.osg.webmail.forms.FolderForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Message view controller.

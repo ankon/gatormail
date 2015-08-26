@@ -21,13 +21,8 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.forms.FolderForm;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.Comparator;
+import java.util.List;
 
 import javax.mail.Flags;
 import javax.mail.Folder;
@@ -35,8 +30,15 @@ import javax.mail.Message;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Comparator;
-import java.util.List;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.forms.FolderForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Display previous Message.

@@ -21,10 +21,10 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.beans.ResultBean;
-import edu.ufl.osg.webmail.forms.FolderForm;
-import edu.ufl.osg.webmail.util.Util;
+import javax.mail.Folder;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -34,9 +34,10 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.Folder;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.beans.ResultBean;
+import edu.ufl.osg.webmail.forms.FolderForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Subscribes and unsubscribes a folder.

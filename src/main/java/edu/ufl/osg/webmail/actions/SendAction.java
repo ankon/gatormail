@@ -20,16 +20,33 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import com.sun.mail.imap.IMAPFolder;
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.prefs.PreferencesProvider;
-import edu.ufl.osg.webmail.beans.ResultBean;
-import edu.ufl.osg.webmail.data.AttachDAOException;
-import edu.ufl.osg.webmail.data.AttachList;
-import edu.ufl.osg.webmail.data.AttachObj;
-import edu.ufl.osg.webmail.forms.ComposeForm;
-import edu.ufl.osg.webmail.util.Util;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Properties;
+
+import javax.mail.BodyPart;
+import javax.mail.Flags;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.mail.Message.RecipientType;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -39,31 +56,17 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.BodyPart;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.Message.RecipientType;
-import javax.mail.MessagingException;
-import javax.mail.Multipart;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.Flags;
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import com.sun.mail.imap.IMAPFolder;
+
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.beans.ResultBean;
+import edu.ufl.osg.webmail.data.AttachDAOException;
+import edu.ufl.osg.webmail.data.AttachList;
+import edu.ufl.osg.webmail.data.AttachObj;
+import edu.ufl.osg.webmail.forms.ComposeForm;
+import edu.ufl.osg.webmail.prefs.PreferencesProvider;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Performs the sending of a composed message.

@@ -20,9 +20,9 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import org.apache.struts.action.ActionMapping;
-
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionMapping;
 
 
 /**

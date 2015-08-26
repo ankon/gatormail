@@ -20,16 +20,21 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.SessionProvider;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.data.DAOFactory;
-import edu.ufl.osg.webmail.data.UserInfoDAO;
-import edu.ufl.osg.webmail.data.UserInfoDAOException;
-import edu.ufl.osg.webmail.prefs.PreferencesProvider;
-import edu.ufl.osg.webmail.util.Util;
-import edu.ufl.osg.webmail.util.RequestTimerFilter;
-import edu.ufl.osg.webmail.util.FolderCloserFilter;
+import java.net.ConnectException;
+import java.net.NoRouteToHostException;
+import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.Properties;
+
+import javax.mail.AuthenticationFailedException;
+import javax.mail.Folder;
+import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
+import javax.mail.Store;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
@@ -40,19 +45,16 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.AuthenticationFailedException;
-import javax.mail.Folder;
-import javax.mail.MessagingException;
-import javax.mail.NoSuchProviderException;
-import javax.mail.Store;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.net.ConnectException;
-import java.net.NoRouteToHostException;
-import java.net.UnknownHostException;
-import java.util.Date;
-import java.util.Properties;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.SessionProvider;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.data.DAOFactory;
+import edu.ufl.osg.webmail.data.UserInfoDAO;
+import edu.ufl.osg.webmail.data.UserInfoDAOException;
+import edu.ufl.osg.webmail.prefs.PreferencesProvider;
+import edu.ufl.osg.webmail.util.FolderCloserFilter;
+import edu.ufl.osg.webmail.util.RequestTimerFilter;
+import edu.ufl.osg.webmail.util.Util;
 
 
 /**

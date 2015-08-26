@@ -1,10 +1,7 @@
 
 package edu.ufl.osg.webmail.imap;
 
-import edu.ufl.osg.webmail.SessionProvider;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.util.Util;
-import edu.ufl.osg.webmail.util.FolderCloserFilter;
+import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Folder;
@@ -13,7 +10,11 @@ import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.servlet.ServletRequest;
-import java.util.Properties;
+
+import edu.ufl.osg.webmail.SessionProvider;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.util.FolderCloserFilter;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * A Session provider for UF's single sign on efforts.

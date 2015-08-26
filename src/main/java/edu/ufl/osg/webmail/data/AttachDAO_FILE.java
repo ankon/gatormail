@@ -20,18 +20,19 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.activation.DataHandler;
-import javax.activation.FileDataSource;
-import javax.mail.internet.MimeBodyPart;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
+
+import javax.activation.DataHandler;
+import javax.activation.FileDataSource;
+import javax.mail.internet.MimeBodyPart;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implementation for interacting with the attachment store.

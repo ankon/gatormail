@@ -20,11 +20,11 @@
 
 package edu.ufl.osg.webmail.forms;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Holds values required for composing, replying to, forwarding, and sending a message.

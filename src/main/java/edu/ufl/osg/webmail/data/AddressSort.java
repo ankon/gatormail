@@ -20,8 +20,9 @@
 
 package edu.ufl.osg.webmail.data;
 
-import javax.mail.internet.InternetAddress;
 import java.util.Comparator;
+
+import javax.mail.internet.InternetAddress;
 
 /**
  * @author drakee

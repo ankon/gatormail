@@ -19,31 +19,23 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import org.apache.struts.action.PlugIn;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.servlet.ServletException;
+import javax.sql.DataSource;
+
 import org.apache.struts.action.ActionServlet;
+import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.ServletException;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-import javax.mail.internet.MimeUtility;
-import javax.mail.MessagingException;
-
 import edu.ufl.osg.webmail.Constants;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.io.InputStream;
-import java.io.ByteArrayInputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Sets up a databased backed preference presistance engine.

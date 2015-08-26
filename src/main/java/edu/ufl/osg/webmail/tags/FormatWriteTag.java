@@ -80,10 +80,6 @@
 
 package edu.ufl.osg.webmail.tags;
 
-import org.apache.struts.taglib.bean.WriteTag;
-import org.apache.struts.util.RequestUtils;
-
-import javax.servlet.jsp.JspException;
 import java.lang.reflect.Constructor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -95,6 +91,11 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import javax.servlet.jsp.JspException;
+
+import org.apache.struts.taglib.bean.WriteTag;
+import org.apache.struts.util.RequestUtils;
 
 
 /**

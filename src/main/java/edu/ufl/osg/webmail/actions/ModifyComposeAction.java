@@ -20,14 +20,13 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.data.AttachList;
-import edu.ufl.osg.webmail.data.AttachObj;
-import edu.ufl.osg.webmail.data.ConfigDAO;
-import edu.ufl.osg.webmail.data.DAOFactory;
-import edu.ufl.osg.webmail.formatters.SizeFormat;
-import edu.ufl.osg.webmail.forms.ComposeForm;
-import edu.ufl.osg.webmail.util.Util;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -38,11 +37,14 @@ import org.apache.struts.upload.FormFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.data.AttachList;
+import edu.ufl.osg.webmail.data.AttachObj;
+import edu.ufl.osg.webmail.data.ConfigDAO;
+import edu.ufl.osg.webmail.data.DAOFactory;
+import edu.ufl.osg.webmail.formatters.SizeFormat;
+import edu.ufl.osg.webmail.forms.ComposeForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Handles user requests for sending mail, uploading and deleting attachments

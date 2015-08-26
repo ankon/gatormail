@@ -20,13 +20,14 @@
 
 package edu.ufl.osg.webmail.wrappers;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.Message.RecipientType;
 import javax.mail.MessagingException;
-import java.util.List;
-import java.util.Collections;
-import java.util.Arrays;
 
 
 /**

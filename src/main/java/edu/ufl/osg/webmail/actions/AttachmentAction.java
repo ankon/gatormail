@@ -20,14 +20,12 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.InvalidSessionException;
-import edu.ufl.osg.webmail.forms.AttachmentForm;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.lang.reflect.InvocationTargetException;
+import java.net.SocketException;
+import java.util.StringTokenizer;
 
 import javax.mail.BodyPart;
 import javax.mail.Folder;
@@ -42,12 +40,16 @@ import javax.mail.internet.MimeUtility;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.lang.reflect.InvocationTargetException;
-import java.net.SocketException;
-import java.util.StringTokenizer;
+
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.InvalidSessionException;
+import edu.ufl.osg.webmail.forms.AttachmentForm;
+import edu.ufl.osg.webmail.util.Util;
 
 
 /**

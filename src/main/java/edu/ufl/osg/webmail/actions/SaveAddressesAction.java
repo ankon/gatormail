@@ -20,13 +20,14 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.beans.ResultBean;
-import edu.ufl.osg.webmail.data.AddressList;
-import edu.ufl.osg.webmail.data.ConfigDAO;
-import edu.ufl.osg.webmail.data.DAOFactory;
-import edu.ufl.osg.webmail.forms.AddressesForm;
-import edu.ufl.osg.webmail.util.Util;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -36,12 +37,13 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.internet.InternetAddress;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.beans.ResultBean;
+import edu.ufl.osg.webmail.data.AddressList;
+import edu.ufl.osg.webmail.data.ConfigDAO;
+import edu.ufl.osg.webmail.data.DAOFactory;
+import edu.ufl.osg.webmail.forms.AddressesForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Saves a list of addresses into a user's address book.

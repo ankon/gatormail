@@ -20,11 +20,11 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.beans.ResultBean;
-import edu.ufl.osg.webmail.data.AddressList;
-import edu.ufl.osg.webmail.forms.AddressForm;
-import edu.ufl.osg.webmail.util.Util;
+import javax.mail.internet.InternetAddress;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -34,10 +34,11 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.internet.InternetAddress;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.beans.ResultBean;
+import edu.ufl.osg.webmail.data.AddressList;
+import edu.ufl.osg.webmail.forms.AddressForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Deletes one or more addressbook entries.

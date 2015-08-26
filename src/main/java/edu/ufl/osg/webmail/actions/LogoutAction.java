@@ -20,19 +20,9 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import com.opensymphony.oscache.web.ServletCache;
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.data.AttachDAO;
-import edu.ufl.osg.webmail.data.AttachList;
-import edu.ufl.osg.webmail.data.DAOFactory;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.lang.ref.Reference;
+import java.util.Date;
+import java.util.Enumeration;
 
 import javax.mail.Folder;
 import javax.mail.Service;
@@ -40,9 +30,22 @@ import javax.mail.Store;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.lang.ref.Reference;
-import java.util.Date;
-import java.util.Enumeration;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.opensymphony.oscache.web.ServletCache;
+
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.data.AttachDAO;
+import edu.ufl.osg.webmail.data.AttachList;
+import edu.ufl.osg.webmail.data.DAOFactory;
+import edu.ufl.osg.webmail.util.Util;
 
 
 /**

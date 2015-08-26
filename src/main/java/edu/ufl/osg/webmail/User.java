@@ -20,10 +20,9 @@
 
 package edu.ufl.osg.webmail;
 
-import edu.ufl.osg.webmail.data.DAOFactory;
-import edu.ufl.osg.webmail.util.Util;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.Serializable;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.mail.Authenticator;
 import javax.mail.NoSuchProviderException;
@@ -32,9 +31,12 @@ import javax.mail.Store;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-import java.io.Serializable;
-import java.util.LinkedList;
-import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.data.DAOFactory;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * The User interface.

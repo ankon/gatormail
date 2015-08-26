@@ -19,15 +19,17 @@
 
 package edu.ufl.osg.webmail.imap;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.SessionProvider;
-import edu.ufl.osg.webmail.data.DAOFactory;
+import java.util.Properties;
+
+import javax.servlet.ServletContext;
+
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 
-import javax.servlet.ServletContext;
-import java.util.Properties;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.SessionProvider;
+import edu.ufl.osg.webmail.data.DAOFactory;
 
 /**
  * IMAP Plugin for UF.

@@ -19,9 +19,10 @@
 
 package edu.ufl.osg.webmail.data;
 
-import javax.mail.internet.InternetAddress;
 import java.util.Map;
 import java.util.WeakHashMap;
+
+import javax.mail.internet.InternetAddress;
 
 /**
  * An Addressbook implementation that doesn't preserve information beyond the user's session.

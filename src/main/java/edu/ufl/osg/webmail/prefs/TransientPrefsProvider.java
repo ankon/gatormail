@@ -19,10 +19,11 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import edu.ufl.osg.webmail.User;
+import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
-import java.util.Properties;
+
+import edu.ufl.osg.webmail.User;
 
 /**
  * Sets up a preferences provider that doesn't presist changes.

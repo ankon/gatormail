@@ -19,21 +19,14 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.managesieve.Response;
-import edu.ufl.osg.managesieve.Session;
-import edu.ufl.osg.managesieve.Token;
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.forms.PreferencesForm;
-import edu.ufl.osg.webmail.prefs.PreferencesProvider;
-import edu.ufl.osg.webmail.util.Util;
-import edu.ufl.osg.webmail.util.FolderCloserFilter;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.BufferedReader;
+import java.io.StringReader;
+import java.util.Date;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.mail.Folder;
 import javax.mail.Store;
@@ -42,14 +35,23 @@ import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Properties;
-import java.util.Date;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.io.BufferedReader;
-import java.io.StringReader;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.managesieve.Response;
+import edu.ufl.osg.managesieve.Session;
+import edu.ufl.osg.managesieve.Token;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.forms.PreferencesForm;
+import edu.ufl.osg.webmail.prefs.PreferencesProvider;
+import edu.ufl.osg.webmail.util.FolderCloserFilter;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Loads and saves the peferences.

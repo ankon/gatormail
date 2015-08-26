@@ -19,15 +19,15 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import org.apache.struts.action.PlugIn;
-import org.apache.struts.action.ActionServlet;
-import org.apache.struts.config.ModuleConfig;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 
-import edu.ufl.osg.webmail.Constants;
+import org.apache.struts.action.ActionServlet;
+import org.apache.struts.action.PlugIn;
+import org.apache.struts.config.ModuleConfig;
 
-import java.io.IOException;
+import edu.ufl.osg.webmail.Constants;
 
 /**
  * Provides a read-only set of preferences. This is not really intended for

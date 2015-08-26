@@ -19,11 +19,11 @@
 
 package edu.ufl.osg.webmail.data;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.IOException;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implementation for initializing and retrieving configuration data.

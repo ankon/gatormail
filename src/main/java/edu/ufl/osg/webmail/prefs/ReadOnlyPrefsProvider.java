@@ -19,12 +19,13 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import edu.ufl.osg.webmail.User;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
-import java.util.Properties;
-import java.io.InputStream;
-import java.io.IOException;
+
+import edu.ufl.osg.webmail.User;
 
 /**
  * Read only preferences read from a property file.

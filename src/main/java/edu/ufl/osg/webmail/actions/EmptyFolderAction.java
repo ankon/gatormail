@@ -19,9 +19,17 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.forms.EmptyFolderForm;
-import edu.ufl.osg.webmail.util.Util;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.mail.Flags;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -31,15 +39,9 @@ import org.apache.struts.actions.LookupDispatchAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.forms.EmptyFolderForm;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Deletes messages in a selected folder, warns user that all messages

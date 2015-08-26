@@ -20,17 +20,18 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.util.Util;
+import javax.mail.Folder;
+import javax.mail.Message;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Printer-friendly message view controller.

@@ -20,12 +20,13 @@
 
 package edu.ufl.osg.webmail.tags;
 
-import edu.ufl.osg.webmail.Constants;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.TagSupport;
+
 import org.apache.struts.taglib.logic.ForwardTag;
 import org.apache.struts.taglib.logic.PresentTag;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.TagSupport;
+import edu.ufl.osg.webmail.Constants;
 
 
 /**

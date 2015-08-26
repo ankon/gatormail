@@ -20,10 +20,15 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.beans.ResultBean;
-import edu.ufl.osg.webmail.forms.FolderForm;
-import edu.ufl.osg.webmail.util.Util;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.mail.Folder;
+import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -32,13 +37,10 @@ import org.apache.struts.actions.LookupDispatchAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.Folder;
-import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.beans.ResultBean;
+import edu.ufl.osg.webmail.forms.FolderForm;
+import edu.ufl.osg.webmail.util.Util;
 
 
 /**

@@ -19,12 +19,13 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import edu.ufl.osg.webmail.Constants;
+import javax.servlet.ServletException;
+
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 
-import javax.servlet.ServletException;
+import edu.ufl.osg.webmail.Constants;
 
 /**
  * Provides a set of preferences that don't perserve the user's settings once

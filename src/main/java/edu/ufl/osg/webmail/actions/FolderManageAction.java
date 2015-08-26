@@ -20,7 +20,14 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.util.Util;
+import java.util.List;
+import java.util.Set;
+
+import javax.mail.Folder;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -28,12 +35,7 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.Folder;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.Set;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Sets up the view for the folder manage page.

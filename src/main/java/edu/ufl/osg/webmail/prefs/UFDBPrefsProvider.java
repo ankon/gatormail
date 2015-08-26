@@ -21,10 +21,11 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import edu.ufl.osg.webmail.User;
+import java.util.Properties;
 
 import javax.servlet.http.HttpSession;
-import java.util.Properties;
+
+import edu.ufl.osg.webmail.User;
 
 /**
  * University of Florida specific {@link DBPrefsProvider}. This class just

@@ -19,11 +19,11 @@
 
 package edu.ufl.osg.webmail.beans;
 
-import javax.mail.Quota;
-
+import java.io.Serializable;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.Serializable;
+
+import javax.mail.Quota;
 
 /**
  * JavaBean to hold {@link Quota} info.

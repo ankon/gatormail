@@ -20,11 +20,6 @@
 
 package edu.ufl.osg.webmail.prefs;
 
-import edu.ufl.osg.webmail.User;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.servlet.http.HttpSession;
 import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
 import java.sql.Connection;
@@ -34,6 +29,13 @@ import java.sql.SQLException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.WeakHashMap;
+
+import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.User;
 
 /**
  * Database backed {@link PreferencesProvider} that caches user's preferences.

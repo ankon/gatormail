@@ -20,14 +20,15 @@
 
 package edu.ufl.osg.webmail.imap;
 
-import edu.ufl.osg.webmail.SessionProvider;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.WebMailAuthenticator;
+import java.util.Properties;
 
 import javax.mail.Authenticator;
 import javax.mail.Session;
 import javax.servlet.ServletRequest;
-import java.util.Properties;
+
+import edu.ufl.osg.webmail.SessionProvider;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.WebMailAuthenticator;
 
 
 /**

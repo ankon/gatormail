@@ -19,12 +19,15 @@
 
 package edu.ufl.osg.webmail.data;
 
-import edu.ufl.osg.webmail.User;
-import org.apache.commons.pool.BasePoolableObjectFactory;
-import org.apache.commons.pool.impl.GenericObjectPool;
-import org.apache.commons.pool.impl.StackObjectPool;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.text.MessageFormat;
+import java.util.Hashtable;
+import java.util.Properties;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeUtility;
@@ -38,15 +41,14 @@ import javax.naming.directory.BasicAttributes;
 import javax.naming.directory.DirContext;
 import javax.naming.directory.InitialDirContext;
 import javax.naming.directory.SearchResult;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.text.MessageFormat;
-import java.util.Hashtable;
-import java.util.Properties;
+
+import org.apache.commons.pool.BasePoolableObjectFactory;
+import org.apache.commons.pool.impl.GenericObjectPool;
+import org.apache.commons.pool.impl.StackObjectPool;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.User;
 
 /**
  * Implementation for obtaining and setting user information via LDAP.

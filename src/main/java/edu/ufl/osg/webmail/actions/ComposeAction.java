@@ -20,11 +20,10 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.prefs.PreferencesProvider;
-import edu.ufl.osg.webmail.forms.ComposeForm;
-import edu.ufl.osg.webmail.util.Util;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -32,9 +31,11 @@ import org.apache.struts.action.ActionMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.forms.ComposeForm;
+import edu.ufl.osg.webmail.prefs.PreferencesProvider;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Set up the view for the compose page.

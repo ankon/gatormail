@@ -20,16 +20,17 @@
 
 package edu.ufl.osg.webmail.formatters;
 
-import org.apache.struts.util.ResponseUtils;
-
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
 import java.text.FieldPosition;
 import java.text.Format;
 import java.text.MessageFormat;
 import java.text.ParsePosition;
 import java.util.Locale;
 import java.util.StringTokenizer;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
+import org.apache.struts.util.ResponseUtils;
 
 
 /**

@@ -20,15 +20,17 @@
 
 package edu.ufl.osg.webmail.forms;
 
-import edu.ufl.osg.webmail.Constants;
+import java.io.UnsupportedEncodingException;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
-import java.io.UnsupportedEncodingException;
+import edu.ufl.osg.webmail.Constants;
 
 /**
  * Package private util class.

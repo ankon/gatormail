@@ -21,18 +21,14 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import com.sun.mail.imap.IMAPFolder;
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.forms.FolderForm;
-import edu.ufl.osg.webmail.prefs.PreferencesProvider;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.mail.Address;
 import javax.mail.FetchProfile;
@@ -45,6 +41,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.search.AddressTerm;
 import javax.mail.search.AndTerm;
+import javax.mail.search.BodyTerm;
 import javax.mail.search.FlagTerm;
 import javax.mail.search.FromStringTerm;
 import javax.mail.search.HeaderTerm;
@@ -53,18 +50,24 @@ import javax.mail.search.OrTerm;
 import javax.mail.search.RecipientStringTerm;
 import javax.mail.search.SearchTerm;
 import javax.mail.search.SubjectTerm;
-import javax.mail.search.BodyTerm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sun.mail.imap.IMAPFolder;
+
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.forms.FolderForm;
+import edu.ufl.osg.webmail.prefs.PreferencesProvider;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Sets up Folder/Message listing view.

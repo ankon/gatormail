@@ -20,19 +20,11 @@
 
 package edu.ufl.osg.webmail.actions;
 
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.data.AddressList;
-import edu.ufl.osg.webmail.data.ConfigDAO;
-import edu.ufl.osg.webmail.data.DAOFactory;
-import edu.ufl.osg.webmail.util.Util;
-import org.apache.struts.action.Action;
-import org.apache.struts.action.ActionError;
-import org.apache.struts.action.ActionErrors;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.mail.Address;
 import javax.mail.Folder;
@@ -43,11 +35,21 @@ import javax.mail.Part;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import org.apache.struts.action.Action;
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.data.AddressList;
+import edu.ufl.osg.webmail.data.ConfigDAO;
+import edu.ufl.osg.webmail.data.DAOFactory;
+import edu.ufl.osg.webmail.util.Util;
 
 /**
  * Readies view for selecting addresses for saving in the addressbook.

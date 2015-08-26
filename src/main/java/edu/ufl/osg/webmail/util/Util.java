@@ -21,24 +21,20 @@
 
 package edu.ufl.osg.webmail.util;
 
-import com.sun.mail.imap.IMAPFolder;
-import com.sun.mail.imap.protocol.IMAPProtocol;
-import com.sun.mail.iap.ProtocolException;
-import com.sun.mail.iap.Argument;
-import edu.ufl.osg.webmail.Constants;
-import edu.ufl.osg.webmail.User;
-import edu.ufl.osg.webmail.data.AddressBkDAO;
-import edu.ufl.osg.webmail.data.AddressBkDAOException;
-import edu.ufl.osg.webmail.data.AddressList;
-import edu.ufl.osg.webmail.data.AttachDAOException;
-import edu.ufl.osg.webmail.data.AttachList;
-import edu.ufl.osg.webmail.data.DAOFactory;
-import org.apache.struts.tiles.ComponentDefinition;
-import org.apache.struts.tiles.DefinitionsFactory;
-import org.apache.struts.tiles.DefinitionsFactoryException;
-import org.apache.struts.tiles.TilesUtilImpl;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.ResourceBundle;
 
 import javax.mail.Address;
 import javax.mail.BodyPart;
@@ -56,20 +52,27 @@ import javax.mail.internet.MimeMultipart;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.lang.ref.Reference;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Iterator;
+
+import org.apache.struts.tiles.ComponentDefinition;
+import org.apache.struts.tiles.DefinitionsFactory;
+import org.apache.struts.tiles.DefinitionsFactoryException;
+import org.apache.struts.tiles.TilesUtilImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.sun.mail.iap.Argument;
+import com.sun.mail.iap.ProtocolException;
+import com.sun.mail.imap.IMAPFolder;
+import com.sun.mail.imap.protocol.IMAPProtocol;
+
+import edu.ufl.osg.webmail.Constants;
+import edu.ufl.osg.webmail.User;
+import edu.ufl.osg.webmail.data.AddressBkDAO;
+import edu.ufl.osg.webmail.data.AddressBkDAOException;
+import edu.ufl.osg.webmail.data.AddressList;
+import edu.ufl.osg.webmail.data.AttachDAOException;
+import edu.ufl.osg.webmail.data.AttachList;
+import edu.ufl.osg.webmail.data.DAOFactory;
 
 /**
  * Utility class with generic convience methods for use in various places.
