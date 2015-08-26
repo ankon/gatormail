@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<tiles-definitions>
+
+    <!-- for simple pages that don't need a navbar. -->
+    <definition name="simpleLayout" page="/layouts/baseLayout.jsp">
+        <put name="title" value="" type="string"/>
+        <put name="header" value="/tiles/common/header.jsp"/>
+        <put name="footer" value="/tiles/common/footer.jsp"/>
+        <put name="body" value=""/>
+    </definition>
+
+    <definition name="loginLayout" page="/layouts/loginLayout.jsp">
+        <put name="title" value="" type="string"/>
+        <put name="header" value="/tiles/login/loginHeader.jsp"/>
+        <put name="footer" value="/tiles/login/loginFooter.jsp"/>
+        <put name="body" value=""/>
+    </definition>
+
+    <!-- for displaying uncaught exceptions. -->
+    <definition name="errorLayout" page="/layouts/errorLayout.jsp">
+        <put name="title" value="" type="string"/>
+        <put name="header" value="/tiles/common/header.jsp"/>
+        <put name="footer" value="/tiles/common/footer.jsp"/>
+        <put name="body" value=""/>
+    </definition>
+
+    <!-- standard layout for pages inside the application. -->
+    <definition name="defaultLayout" page="/layouts/defaultLayout.jsp">
+        <put name="title" value="" type="string"/>
+        <put name="header" value="/tiles/common/header.jsp"/>
+        <put name="footer" value="/tiles/common/footer.jsp"/>
+        <put name="navBar" value="/tiles/common/navBar.jsp"/>
+        <put name="results" value="/tiles/common/results.jsp"/>
+        <put name="body" value=""/>
+    </definition>
+
+    <!-- Definitions related to the folder view. -->
+    <definition name="folderLayout" page="/layouts/folderLayout.jsp" extends="defaultLayout">
+        <put name="folderName" value="" type="string"/>
+        <put name="folderList" value="/tiles/folder/folderList.jsp"/>
+        <put name="emptyTrash" value="/tiles/folder/emptyTrash.jsp"/>
+        <put name="emptyFolder" value="/tiles/folder/emptyFolder.jsp"/> 
+        <put name="folderQuota" value="/tiles/folder/folderQuota.jsp"/>
+        <put name="messageListHeader" value="/tiles/folder/messageListHeader.jsp"/>
+        <put name="messageListView" value="/tiles/folder/messageListView.jsp"/>
+        <put name="messageList" value="/tiles/folder/messageList.jsp"/>
+    </definition>
+
+    <!-- Definitions related to the folder options view. -->
+    <definition name="folderManageLayout" page="/layouts/folderManageLayout.jsp"
+                extends="defaultLayout">
+        <put name="folderList" value="/tiles/folder/folderList.jsp"/>
+        <put name="folderQuota" value="/tiles/folder/folderQuota.jsp"/>
+    </definition>
+
+    <!-- Definitions related to the printer-friendly message view. -->
+    <definition name="printerFriendlyLayout" page="/layouts/printerFriendlyLayout.jsp"
+                extends="simpleLayout">
+        <put name="body" value="/tiles/message/message.jsp"/>
+    </definition>
+
+    <!-- Definitions related to the message view. -->
+    <definition name="messageLayout" page="/layouts/messageLayout.jsp" extends="defaultLayout">
+        <put name="messageName" value="" type="string"/>
+        <put name="messageMenuHead" value="/tiles/message/messageMenuHead.jsp"/>
+        <put name="body" value="/tiles/message/message.jsp"/>
+        <put name="messageMenuFoot" value="/tiles/message/messageMenuFoot.jsp"/>
+    </definition>
+
+    <definition name="message.message" page="/tiles/message/message.jsp"/>
+
+    <!-- Message media type: http://www.iana.org/assignments/media-types/message/ -->
+    <definition name="message.message/rfc822" page="/tiles/message/message/rfc822.jsp"/>
+    <definition name="message.message/delivery-status" page="/tiles/message/message/delivery-status.jsp"/>
+
+    <!-- Multipart media type: http://www.iana.org/assignments/media-types/multipart/ -->
+    <definition name="message.multipart" extends="message.multipart/mixed"/>
+    <definition name="message.multipart/mixed" page="/tiles/message/multipart/mixed.jsp"/>
+    <definition name="message.multipart/alternative" page="/tiles/message/multipart/alternative.jsp"/>
+    <definition name="message.multipart/digest" page="/tiles/message/multipart/digest.jsp"/>
+    <definition name="message.multipart/parallel" page="/tiles/message/multipart/parallel.jsp"/>
+    <definition name="message.multipart/related" page="/tiles/message/multipart/related.jsp"/>
+    <definition name="message.multipart/report" page="/tiles/message/multipart/report.jsp"/>
+    <definition name="message.multipart/appledouble" page="/tiles/message/multipart/appledouble.jsp"/>
+
+    <!-- Text media type: http://www.iana.org/assignments/media-types/text/ -->
+    <definition name="message.text/plain" page="/tiles/message/text/plain.jsp"/>
+    <definition name="message.text/file" extends="message.text/plain"/>
+    <definition name="message.text/html" page="/tiles/message/text/html.jsp"/>
+    <!-- http://www.rfc-editor.org/rfc/rfc1341.txt -->
+    <definition name="message.text/richtext" page="/tiles/message/text/richtext.jsp"/>
+    <!-- http://www.rfc-editor.org/rfc/rfc1896.txt -->
+    <definition name="message.text/enriched" page="/tiles/message/text/enriched.jsp"/>
+
+    <!-- Image media type: http://www.iana.org/assignments/media-types/image/ -->
+    <definition name="message.image/gif" page="/tiles/message/image/default.jsp"/>
+    <definition name="message.image/jpeg" page="/tiles/message/image/default.jsp"/>
+    <definition name="message.image/jpg" extends="message.image/jpeg"/>
+    <definition name="message.image/pjpeg" extends="message.image/jpeg"/>
+    <definition name="message.image/png" page="/tiles/message/image/default.jsp"/>
+    <definition name="message.image/bmp" page="/tiles/message/image/default.jsp"/>
+
+    <definition name="message" page="/tiles/message/messageContentOther.jsp"/>
+
+    <definition name="messageContentOther" page="/tiles/message/messageContentOther.jsp"/>
+
+</tiles-definitions>

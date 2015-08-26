@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="dist" name="GatorMail WebMail">
+    <description>GatorMail WebMail</description>
+
+    <target name="init">
+        <!-- Give user a chance to override without editing this file
+               (and without typing -D each time it compiles it) -->
+        <property file="${user.home}/.gatormail.properties"/>
+        <property file=".gatormail.properties"/>
+
+        <!-- Defaults for build, put local values for these in one of the files -->
+        <!-- above to override them. -->
+        <property name="gatormail.db.user" value="" description="The user for the database"/>
+        <property name="gatormail.db.creds" value="" description="The password for the database"/>
+        <property name="gatormail.ldap.principal" value="" description="The LDAP principal"/>
+        <property name="gatormail.ldap.creds" value="" description="The LDAP password"/>
+        <property name="gatormail.use.data.source" value="true"/>
+        <property name="gatormail.jdbc.driver" value="" description="depricated"/>
+        <property name="gatormail.jdbc.url" value="" description="depricated"/>
+        <property name="gatormail.attachment.path" value="" description="Local path to hold attachments until they are sent."/>
+
+        <property name="VERSION" value="1.0.24"/>
+
+        <tstamp/>
+
+        <property name="javac.debug" value="true"/>
+        <property name="javac.optimize" value="false"/>
+        <property name="javadoc.access" value="protected"/>
+        <property name="javadoc.footer" value=""/>
+
+        <property name="ver.javamail" value="1.3.3"/>
+        <property name="ver.servlet-api" value="2.4"/>
+        <property name="ver.jstl" value="1.1"/>
+        <property name="ver.struts" value="1.1"/>
+        <property name="ver.log4j" value="1.2.8"/>
+        <property name="ver.nekohtml" value="0.7.7"/>
+        <property name="ver.xalan" value="2.5.2"/>
+        <property name="ver.commons-pool" value="1.3"/>
+        <property name="ver.oscache" value="2.2"/>
+
+        <property name="src.dir" value="src"/>
+        <property name="src.images.dir" value="${src.dir}/images"/>
+        <property name="src.java.dir" value="${src.dir}/java"/>
+        <property name="src.webapp.dir" value="${src.dir}/webapp"/>
+        <property name="src.xml.dir" value="${src.dir}/xml"/>
+
+        <property name="lib.dir" value="lib"/>
+        <property name="lib.servlet-api.dir" value="${lib.dir}/servlet-${ver.servlet-api}"/>
+        <property name="lib.jstl.dir" value="${lib.dir}/jstl-${ver.jstl}"/>
+        <property name="lib.javamail.dir" value="${lib.dir}/javamail-${ver.javamail}"/>
+        <property name="lib.struts.dir" value="${lib.dir}/struts-${ver.struts}"/>
+        <property name="lib.db.dir" value="${lib.dir}/db"/>
+        <property name="lib.nekohtml.dir" value="${lib.dir}/nekohtml-${ver.nekohtml}"/>
+        <property name="lib.xalan.dir" value="${lib.dir}/xalan-${ver.xalan}"/>
+        <property name="lib.gatorlinkauth.dir" value="${lib.dir}/gatorlinkauth"/>
+        <property name="lib.commons-pool.dir" value="${lib.dir}/commons-pool-${ver.commons-pool}"/>
+        <property name="lib.managesievecraplib.dir" value="${lib.dir}/managesievecraplib"/>
+        <property name="lib.oscache.dir" value="${lib.dir}/oscache-${ver.oscache}"/>
+
+        <property name="build.dir" value="build"/>
+        <property name="build.classes.dir" value="${build.dir}/classes"/>
+        <property name="build.props.dir" value="${build.dir}/props"/>
+        <property name="build.jar.dir" value="${build.dir}/jar"/>
+        <property name="build.jsp.dir" value="${build.dir}/jsp"/>
+        <property name="build.webinf.dir" value="${build.dir}/webinf"/>
+        <property name="build.war.dir" value="${build.dir}/war"/>
+        <property name="build.ear.dir" value="${build.dir}/ear"/>
+
+        <property name="dist.dir" value="dist"/>
+
+        <property name="doc.dir" value="docs"/>
+        <property name="doc.api.dir" value="${doc.dir}/api"/>
+
+        <!-- File sets -->
+        <fileset dir="${src.images.dir}" id="fileset.gatormail.images">
+            <include name="*.gif"/>
+            <include name="*.jpg"/>
+            <include name="*.png"/>
+            <include name="*.ico"/>
+        </fileset>
+
+        <fileset dir="${lib.servlet-api.dir}" id="fileset.servlet-api">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.javamail.dir}" id="fileset.javamail">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.jstl.dir}/lib" id="fileset.jstl.lib">
+            <include name="**/*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.jstl.dir}/tld" id="fileset.jstl.webinf">
+            <include name="**/*.tld"/>
+        </fileset>
+
+        <fileset dir="${lib.struts.dir}" id="fileset.struts.lib">
+            <include name="*.jar"/>
+            <exclude name="commons-collections.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.struts.dir}" id="fileset.struts.webinf">
+            <include name="*.tld"/>
+        </fileset>
+
+        <fileset dir="${lib.db.dir}" id="fileset.db.lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.nekohtml.dir}" id="fileset.nekohtml.lib">
+            <include name="nekohtml.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.xalan.dir}" id="fileset.xalan.lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.gatorlinkauth.dir}" id="fileset.gatorlinkauth.lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.commons-pool.dir}" id="fileset.commons-pool.lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.managesievecraplib.dir}" id="fileset.managesievecraplib.lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${lib.oscache.dir}" id="fileset.oscache.lib">
+            <include name="*.jar"/>
+        </fileset>
+
+        <!-- Class paths -->
+        <path id="classpath.servlet-api">
+            <fileset refid="fileset.servlet-api"/>
+        </path>
+
+        <path id="classpath.jstl">
+            <fileset refid="fileset.jstl.lib"/>
+        </path>
+
+        <path id="classpath.javamail">
+            <fileset refid="fileset.javamail"/>
+        </path>
+
+        <path id="classpath.struts">
+            <fileset refid="fileset.struts.lib"/>
+        </path>
+
+        <path id="classpath.log4j">
+            <pathelement location="${lib.dir}/log4j-${ver.log4j}.jar"/>
+        </path>
+
+        <path id="classpath.j2ee">
+            <pathelement location="${lib.dir}/j2ee.jar"/>
+        </path>
+
+        <path id="classpath.xalan">
+            <fileset refid="fileset.xalan.lib"/>
+        </path>
+
+        <path id="classpath.gatorlinkauth">
+            <fileset refid="fileset.gatorlinkauth.lib"/>
+        </path>
+
+        <path id="classpath.commons-pool">
+            <fileset refid="fileset.commons-pool.lib"/>
+        </path>
+
+        <path id="classpath.managesievecraplib">
+            <fileset refid="fileset.managesievecraplib.lib"/>
+        </path>
+
+        <path id="classpath.oscache">
+            <fileset refid="fileset.oscache.lib"/>
+        </path>
+    </target>
+
+    <target name="build.classes" depends="init">
+        <mkdir dir="${build.classes.dir}"/>
+        <javac debug="${javac.debug}" destdir="${build.classes.dir}" optimize="${javac.optimize}" srcdir="${src.java.dir}" deprecation="true">
+            <classpath refid="classpath.servlet-api"/>
+            <classpath refid="classpath.javamail"/>
+            <classpath refid="classpath.struts"/>
+            <classpath refid="classpath.log4j"/>
+            <classpath refid="classpath.j2ee"/>
+            <classpath refid="classpath.xalan"/>
+            <classpath refid="classpath.commons-pool"/>
+            <classpath refid="classpath.managesievecraplib"/>
+            <classpath refid="classpath.oscache"/>
+        </javac>
+    </target>
+
+    <target name="build.properties" depends="init">
+        <mkdir dir="${build.props.dir}"/>
+        <copy todir="${build.props.dir}">
+            <fileset dir="${src.dir}">
+                <include name="Messages.properties"/>
+                <include name="log4j.properties"/>
+                <include name="gatormail.properties"/>
+            </fileset>
+            <filterset>
+                <filter token="DBUSER" value="${gatormail.db.user}"/>
+                <filter token="DBCREDS" value="${gatormail.db.creds}"/>
+                <filter token="LDAPPRINC" value="${gatormail.ldap.principal}"/>
+                <filter token="LDAPCREDS" value="${gatormail.ldap.creds}"/>
+                <filter token="USEDATASOURCE" value="${gatormail.use.data.source}"/>
+                <filter token="JDBCDRIVER" value="${gatormail.jdbc.driver}"/>
+                <filter token="JDBCURL" value="${gatormail.jdbc.url}"/>
+                <filter token="ATTACHPATH" value="${gatormail.attachment.path}"/>
+            </filterset>
+        </copy>
+    </target>
+
+    <target name="build.jar" depends="init,build.classes,build.properties">
+        <mkdir dir="${build.jar.dir}"/>
+        <jar compress="true" destfile="${build.jar.dir}/GatorMail.jar">
+            <fileset dir="${build.classes.dir}"/>
+            <fileset dir="${build.props.dir}"/>
+            <fileset dir="${src.xml.dir}">
+                <include name="html-sanitize.xsl"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="build.jsp" depends="init">
+        <description>Preps the jsps</description>
+
+        <mkdir dir="${build.jsp.dir}"/>
+        <copy todir="${build.jsp.dir}" overwrite="true">
+            <fileset dir="${src.webapp.dir}">
+                <include name="**/*.jsp"/>
+            </fileset>
+            <filterset>
+                <filter token="DATE" value="${TODAY}"/>
+                <filter token="VERSION" value="${VERSION}"/>
+            </filterset>
+        </copy>
+    </target>
+
+    <target name="build.webinf" depends="init">
+        <description>Preps the config files in WEB-INF</description>
+
+        <mkdir dir="${build.webinf.dir}"/>
+        <copy todir="${build.webinf.dir}" overwrite="true">
+            <fileset refid="fileset.struts.webinf"/>
+            <fileset refid="fileset.jstl.webinf"/>
+            <fileset dir="${src.webapp.dir}/WEB-INF">
+                <include name="**/GatorMail.tld"/>
+                <include name="**/struts-config.xml"/>
+                <include name="**/tiles-defs.xml"/>
+                <include name="**/web.xml"/>
+            </fileset>
+            <filterset>
+                <filter token="DATE" value="${TODAY}"/>
+                <filter token="VERSION" value="${VERSION}"/>
+                <filter token="DBUSER" value="${gatormail.db.user}"/>
+                <filter token="DBCREDS" value="${gatormail.db.creds}"/>
+            </filterset>
+        </copy>
+
+        <mkdir dir="${build.webinf.dir}/classes"/>
+        <copy todir="${build.webinf.dir}/classes" overwrite="true">
+            <fileset dir="${src.java.dir}">
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="build.war" depends="init,build.jar,build.jsp,build.webinf" description="Generate a war">
+        <mkdir dir="${build.war.dir}"/>
+        <war destfile="${build.war.dir}/GatorMail.war" webxml="${build.webinf.dir}/web.xml" compress="true">
+            <!-- / -->
+            <fileset dir="${build.jsp.dir}"/>
+            <fileset dir="${src.webapp.dir}" includes="yui/**"/>
+            <fileset dir="${src.webapp.dir}" includes="alertMessage.js"/>
+
+            <fileset refid="fileset.gatormail.images"/>
+
+            <!-- /WEB-INF -->
+            <webinf dir="${build.webinf.dir}">
+                <exclude name="web.xml"/>
+            </webinf>
+            <webinf file="${src.xml.dir}/ibm-web-ext.xmi"/>
+
+            <!-- /WEB-INF/lib -->
+            <lib dir="${build.jar.dir}">
+                <include name="GatorMail.jar"/>
+            </lib>
+            <lib refid="fileset.javamail"/>
+            <lib refid="fileset.struts.lib"/>
+            <lib refid="fileset.jstl.lib"/>
+            <lib file="${lib.dir}/log4j-${ver.log4j}.jar"/>
+            <lib refid="fileset.db.lib"/>
+            <lib refid="fileset.nekohtml.lib"/>
+            <lib refid="fileset.xalan.lib"/>
+            <lib refid="fileset.gatorlinkauth.lib"/>
+            <lib refid="fileset.commons-pool.lib"/>
+            <lib refid="fileset.oscache.lib"/>
+        </war>
+    </target>
+
+    <target name="build.ear" depends="build.war">
+        <mkdir dir="${build.ear.dir}"/>
+        <ear destfile="${build.ear.dir}/GatorMail.ear" appxml="${src.xml.dir}/application.xml" compress="true">
+            <fileset dir="${build.war.dir}" includes="*.war"/>
+        </ear>
+    </target>
+
+    <target name="dist" depends="build.ear" description="Use productions settings when building the project."/>
+
+    <target name="javadoc" depends="init" description="Generate JavaDocs">
+        <mkdir dir="${doc.api.dir}"/>
+        <javadoc sourcepath="${src.java.dir}" destdir="${doc.api.dir}" packagenames="edu.ufl.osg.webmail.*" source="1.3" windowtitle="${ant.project.name}" overview="${src.java.dir}/edu/ufl/osg/webmail/overview.html" access="${javadoc.access}" use="true" failonerror="true">
+            <doctitle><![CDATA[${ant.project.name}]]></doctitle>
+            <header><![CDATA[${ant.project.name}]]></header>
+            <footer><![CDATA[${TODAY}${javadoc.footer}]]></footer>
+
+            <classpath refid="classpath.servlet-api"/>
+            <classpath refid="classpath.javamail"/>
+            <classpath refid="classpath.struts"/>
+            <classpath refid="classpath.log4j"/>
+            <classpath refid="classpath.j2ee"/>
+            <classpath refid="classpath.xalan"/>
+            <classpath refid="classpath.oscache"/>
+
+            <link href="http://java.sun.com/j2se/1.4.2/docs/api/"/>
+            <link href="http://java.sun.com/products/javamail/javadocs/"/>
+            <!-- TODO: Update to link to servlet 2.4 when sun has published them. -->
+            <link href="http://java.sun.com/products/servlet/2.3/javadoc/"/>
+            <link href="http://jakarta.apache.org/struts/api/"/>
+            <link href="http://jakarta.apache.org/log4j/docs/api/"/>
+        </javadoc>
+    </target>
+
+    <target name="clean" depends="clean.build,clean.dist,clean.api" description="Clean all files"/>
+
+    <target name="clean.build" depends="init">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="clean.dist" depends="init">
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="clean.api" depends="init">
+        <delete dir="${doc.api.dir}"/>
+    </target>
+</project>

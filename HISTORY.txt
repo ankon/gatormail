@@ -1,0 +1,30 @@
+Tag a branch (for example):
+	cvs tag rel-1_0_6
+
+Check out tagged branches with (for example):
+	cvs checkout -P -r rel-0_9_3 GatorMail
+
+==================================================================
+
+2003-03-20:
+	tagged release rel-0_9_0 
+
+2003-03-22:
+	tagged release rel-0_9_3
+	* This is version uses much more efficient folder caching
+
+	tagged release rel-0_9_3_1
+	* Added improved help page
+
+2003-04-21:
+        tagged release rel-1_0_1
+
+2003-06-04:
+	tagged release rel-1_0_6
+
+2004-02-24:
+	tagged release rel-1_0_10
+
+2004-05-03:
+	tagged release rel-1_0_11
+	* New filters to take advantage of spam headers

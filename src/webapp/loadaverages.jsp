@@ -1,0 +1,1 @@
+<%@ page contentType="text/plain" import="edu.ufl.osg.webmail.util.RequestTimerFilter,edu.ufl.osg.webmail.util.Util"%><%= System.getProperty("jasclone", "undefined") %> <%= Util.getActiveSessions().size() %> <%= RequestTimerFilter.getPreviousResponseTime() %> <%= RequestTimerFilter.getFiveMinuteResponseTime() %> <%= RequestTimerFilter.getFifteenMinuteResponseTime() %>

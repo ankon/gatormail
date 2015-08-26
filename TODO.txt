@@ -1,0 +1,38 @@
+
+*   In message view show the reply-to header.
+
+*   Spellcheck: Use http://jazzy.sf.net for the engine and GameFaqs.com has
+    a reasonablly easy to implement example in their forums.
+
+*   Full message search.
+
+*   Clean up the CSS style sheets. They are a hairball.
+
+*   LoginAction needs to be atomic. Currently it adds things to the session in
+    steps which can lead to problems.
+
+*   The way that we use ActionForm beans is broken. It currently works but odds
+    are it will break in future versions of Struts.
+
+*   Lots of stuff. Just grep for 'TODO' or 'XXX' in the GatorMail sources.
+
+*   Support RFC2369: http://www.nisto.com/listspec/
+
+*   Support In-Reply-To as per RFC822 and References would be nice.
+
+*   Attach many messages to a message for the purposes of forwarding them.
+
+*   Actually keep messages being composed in a user's Draft folder.
+
+*   Make sure we follow the dvice in IMAP4 Implementation Recommendations:
+    http://www.cis.ohio-state.edu/cgi-bin/rfc/rfc2683.html
+
+*   Delete View -  the use of a Trash folder isn't so hot. Simply flagging
+    messages as to be deleted in place and providing a "Trash View" would
+    probably be better.
+
+*   Make Previous and Next links respect the filter.
+
+*   See if an mime part has a file name, if so, provide a download link.
+
+*   Support link rel= : http://lists.w3.org/Archives/Public/www-html/2001Oct/0026.html

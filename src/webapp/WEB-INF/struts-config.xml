@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_1.dtd">
+
+<!--
+     This is the GatorMail Struts configuration. Odds are you'll only need to
+     edit some of the last gobal-forwrds and the plug-ins.
+-->
+
+<struts-config>
+
+    <!-- ==================================== Data Source Configuration -->
+
+    <data-sources/>
+
+    <!-- ======================================== Form Bean Definitions -->
+
+    <form-beans>
+        <form-bean name="addressForm" type="edu.ufl.osg.webmail.forms.AddressForm"/>
+        <form-bean name="addressesForm" type="edu.ufl.osg.webmail.forms.AddressesForm"/>
+        <form-bean name="attachmentForm" type="edu.ufl.osg.webmail.forms.AttachmentForm"/>
+        <form-bean name="composeForm" type="edu.ufl.osg.webmail.forms.ComposeForm"/>
+        <form-bean name="deleteMessageForm" type="edu.ufl.osg.webmail.forms.DeleteMessageForm"/>
+        <form-bean name="deleteMessagesForm" type="edu.ufl.osg.webmail.forms.DeleteMessagesForm"/>
+        <form-bean name="emptyFolderForm" type="edu.ufl.osg.webmail.forms.EmptyFolderForm"/>
+        <form-bean name="folderForm" type="edu.ufl.osg.webmail.forms.FolderForm"/>
+        <form-bean name="folderActionForm" type="edu.ufl.osg.webmail.forms.FolderActionForm"/>
+        <form-bean name="loginForm" type="edu.ufl.osg.webmail.forms.LoginForm"/>
+        <form-bean name="messageForm" type="edu.ufl.osg.webmail.forms.MessageForm"/>
+        <form-bean name="modifyFolderForm" type="edu.ufl.osg.webmail.forms.ModifyFolderForm"/>
+        <form-bean name="moveCopyForm" type="edu.ufl.osg.webmail.forms.MoveCopyForm"/>
+        <form-bean name="newFolderForm" type="edu.ufl.osg.webmail.forms.NewFolderForm"/>
+        <form-bean name="preferencesForm" type="edu.ufl.osg.webmail.forms.PreferencesForm"/>
+    </form-beans>
+
+
+    <!-- ================================= Global Exception Definitions -->
+    <global-exceptions>
+        <!-- XXX: Think more on this. -->
+
+        <exception key="error.session.expired" path="login" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="edu.ufl.osg.webmail.InvalidSessionException"/>
+
+        <exception key="error.session.expired" path="login" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="edu.ufl.osg.webmail.SessionExpiredException"/>
+
+        <exception key="error.compose.saved" path="login" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="edu.ufl.osg.webmail.ComposeSavedException"/>
+
+        <exception key="error.connection.failed" path="errorBasic" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="javax.mail.FolderClosedException"/>
+
+        <exception key="error.connection.failed" path="errorBasic" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="javax.mail.StoreClosedException"/>
+
+        <exception key="error.folder.notfound" path="errorBasic" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="javax.mail.FolderNotFoundException"/>
+
+        <exception key="error.default" path="errorUncaught" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="java.lang.Throwable"/>
+
+    </global-exceptions>
+
+    <!-- =================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <forward name="about" path="/about.do"/>
+        <forward name="addAddress" path="/addAddress.do"/>
+        <forward name="addressbook" path="/addressbook.do"/>
+        <forward name="attachment" path="/attachment.do" redirect="true"/>
+        <forward name="changeSubscribed" path="/changeSubscribed.do"/>
+        <forward name="checkCookies" path="/checkCookies.do" redirect="true"/>
+        <forward name="compose" path="/compose.do" redirect="true"/>
+        <forward name="composeResume" path="/composeResume.do"/>
+        <forward name="confirmEmptyFolder" path="/confirmEmptyFolder.do"/>        
+        <forward name="copyMessage" path="/copyMessage.do"/>
+        <forward name="copyMessages" path="/copyMessages.do"/>
+        <forward name="CSS" path="/style.css.jsp" redirect="true"/>
+        <forward name="deleteMessage" path="/deleteMessage.do"/>
+        <forward name="deleteMessages" path="/deleteMessages.do"/>
+        <forward name="deleteAttachment" path="/deleteAttachment.do"/>
+        <forward name="deleteAddress" path="/deleteAddress.do"/>
+        <forward name="deleteFolder" path="/deleteFolder.do"/>
+        <forward name="folderManage" path="/folderManage.do"/>
+        <forward name="folderManageModify" path="/folderManageModify.do"/>
+        <forward name="errorBasic" path="/errorBasic.do"/>
+        <forward name="errorCopy" path="/errorCopy.do"/>
+        <forward name="errorCopyToSent" path="/errorCopyToSent.do"/>
+        <forward name="errorCopyToTrash" path="/errorCopyToTrash.do"/>
+        <forward name="errorLogout" path="/errorLogout.do"/>
+        <forward name="errorUncaught" path="/errorUncaught.do"/>
+        <forward name="failMessage" path="/message.do"/>
+        <forward name="failMessageList" path="/folder.do"/>
+        <forward name="folder" path="/folder.do"/>
+        <forward name="forward" path="/forward.do"/>
+        <forward name="subject" path="/folder.do?folder=INBOX"/>
+        <forward name="help" path="/help.do"/>
+        <forward name="inbox" path="/folder.do?folder=INBOX" redirect="true"/>
+        <forward name="INBOX" path="/folder.do?folder=INBOX"/>
+        <forward name="login" path="/login.do"/>
+        <forward name="logout" path="/logout.do"/>
+        <forward name="message" path="/message.do"/>
+        <forward name="modifyCompose" path="/modifyCompose.do"/>
+        <forward name="modifyFolder" path="/modifyFolder.do"/>
+        <forward name="modifyMessage" path="/modifyMessage.do"/>
+        <forward name="moveMessage" path="/moveMessage.do"/>
+        <forward name="moveMessages" path="/moveMessages.do"/>
+        <forward name="nextMessage" path="/nextMessage.do"/>
+        <forward name="prevMessage" path="/prevMessage.do"/>
+        <forward name="noInbox" path="/noInbox.do"/>
+        <forward name="performDeleteFolder" path="/performDeleteFolder.do"/>
+        <forward name="prevMessage" path="/prevMessage.do"/>
+        <forward name="preferences" path="/preferences.do"/>
+        <forward name="printerFriendly" path="/printerFriendly.do"/>
+        <forward name="reportSpam" path="/reportSpam.do"/>
+        <forward name="reportHam" path="/reportHam.do"/>
+        <forward name="rawMessage" path="/rawMessage.do"/>
+        <forward name="reply" path="/reply.do"/>
+        <forward name="saveAddress" path="/saveAddress.do"/>
+        <forward name="saveAddresses" path="/saveAddresses.do"/>
+        <forward name="selectAddresses" path="/selectAddresses.do"/>
+        <forward name="send" path="/send.do"/>
+        <forward name="feedback" path="/feedback.do"/>
+        <forward name="composeFeedback" path="/compose.do?to=consult@lists.ufl.edu&amp;subject=GatorMail+Webmail+Feedback+@VERSION@"/>
+        <forward name="helpdeskFeedback" path="/compose.do?to=helpdesk@ufl.edu&amp;subject=GatorMail+Webmail+Feedback+@VERSION@"/>
+    </global-forwards>
+
+
+    <!-- =================================== Action Mapping Definitions -->
+    <action-mappings>
+
+        <action path="/login" name="loginForm" scope="request" input="login" type="edu.ufl.osg.webmail.actions.LoginAction">
+            <forward name="login" path="/login.jsp"/>
+            <forward name="overLimit" path="/overLimit.jsp"/>
+            <forward name="success" path="/folder.do?folder=INBOX" redirect="true"/>
+            <!--
+                        <forward name="success" path="/checkCookies.do" redirect="true"/>
+                        <forward name="success" path="/folder.do?folder=INBOX" redirect="true"/>
+            -->
+            <forward name="noInbox" path="/noInbox.do" redirect="true"/>
+        </action>
+
+        <action path="/checkCookies" type="edu.ufl.osg.webmail.actions.CheckCookiesAction">
+            <forward name="success" path="/loginMessage.jsp" redirect="true"/>
+            <forward name="fail" path="/cookiesDisabled.jsp" redirect="true"/>
+        </action>
+
+        <action path="/logout" type="edu.ufl.osg.webmail.actions.LogoutAction">
+            <forward name="success" path="/" redirect="true"/>
+        </action>
+
+        <action path="/folder" name="folderForm" scope="request" input="inbox" type="edu.ufl.osg.webmail.actions.FolderAction">
+            <forward name="success" path="/folder.jsp"/>
+        </action>
+
+        <action path="/emptyFolder" name="emptyFolderForm" scope="request" input="folder" parameter="action" type="edu.ufl.osg.webmail.actions.EmptyFolderAction">
+            <forward name="confirmEmptyFolder" path="/confirmEmptyFolder.jsp"/>
+            <forward name="folder" path="/folder.do" redirect="true"/>
+        </action>
+
+        <action path="/modifyFolder" name="modifyFolderForm" scope="request" input="folder" type="edu.ufl.osg.webmail.actions.ModifyFolderAction" parameter="action">
+            <forward name="Zsuccess" path="/folder.do" redirect="true"/>
+        </action>
+
+        <action path="/folderManage" scope="request" type="edu.ufl.osg.webmail.actions.FolderManageAction" validate="false">
+            <forward name="success" path="/folderManage.jsp"/>
+        </action>
+
+        <action path="/folderManageModify" name="folderForm" scope="request" type="edu.ufl.osg.webmail.actions.FolderManageModifyAction">
+            <forward name="success" path="/folderManageModify.jsp"/>
+        </action>
+
+        <action path="/createFolder" name="newFolderForm" scope="request" input="folderManageModify" type="edu.ufl.osg.webmail.actions.CreateFolderAction">
+            <forward name="success" path="/folderManage.do"/>
+            <forward name="fail" path="/folderManageModify.do"/>
+        </action>
+
+        <action path="/renameFolder" name="newFolderForm" scope="request" input="folderManageModify" type="edu.ufl.osg.webmail.actions.RenameFolderAction">
+            <forward name="success" path="/folderManage.do"/>
+            <forward name="fail" path="/folderManageModify.do"/>
+        </action>
+
+        <action path="/changeSubscribed" name="folderActionForm" scope="request" input="folderManageModify" parameter="action" type="edu.ufl.osg.webmail.actions.ChangeSubscribedAction">
+            <forward name="success" path="/folderManage.do"/>
+            <forward name="fail" path="/folderManage.do"/>
+        </action>
+
+        <action path="/deleteFolder" name="folderForm" scope="request" input="folderManage" type="edu.ufl.osg.webmail.actions.DeleteFolderAction">
+            <forward name="success" path="/confirmDeleteFolder.jsp"/>
+            <forward name="fail" path="/folderManage.do"/>
+        </action>
+
+        <action path="/performDeleteFolder" name="folderForm" scope="request" input="/confirmDeleteFolder.jsp" parameter="action" type="edu.ufl.osg.webmail.actions.PerformDeleteFolderAction">
+            <forward name="success" path="/folderManage.do"/>
+            <forward name="cancel" path="/folderManage.do"/>
+            <forward name="fail" path="/folderManage.do"/>
+        </action>
+
+        <action path="/deleteMessage" name="deleteMessageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.DeleteMessageAction">
+            <forward name="success" path="/message.jsp"/>
+        </action>
+
+        <action path="/deleteMessages" name="deleteMessagesForm" scope="request" input="folder" type="edu.ufl.osg.webmail.actions.DeleteMessagesAction">
+            <forward name="success" path="/folder.do"/>
+        </action>
+
+        <action path="/modifyMessage" name="moveCopyForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.ModifyMessageAction" parameter="action">
+        </action>
+
+        <action path="/moveMessage" name="moveCopyForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.MoveCopyAction">
+            <forward name="success" path="/folder.do"/>
+        </action>
+
+        <action path="/copyMessage" name="moveCopyForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.MoveCopyAction">
+            <forward name="success" path="/message.do"/>
+        </action>
+
+        <action path="/moveMessages" name="moveCopyForm" scope="request" input="folder" type="edu.ufl.osg.webmail.actions.MoveCopyAction">
+            <forward name="success" path="/folder.do"/>
+        </action>
+
+        <action path="/copyMessages" name="moveCopyForm" scope="request" input="folder" type="edu.ufl.osg.webmail.actions.MoveCopyAction">
+            <forward name="success" path="/folder.do"/>
+        </action>
+
+        <action path="/message" name="messageForm" scope="request" input="folder" type="edu.ufl.osg.webmail.actions.MessageAction">
+            <exception key="error.message.notfound" path="folder" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="java.lang.IndexOutOfBoundsException"/>
+            <forward name="success" path="/message.jsp"/>
+        </action>
+
+        <action path="/rawMessage" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.RawMessageAction">
+            <exception key="error.message.notfound" path="folder" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="java.lang.IndexOutOfBoundsException"/>
+        </action>
+
+        <action path="/nextMessage" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.NextMessageAction">
+            <exception key="error.message.notfound" path="folder" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="java.lang.IndexOutOfBoundsException"/>
+            <forward name="success" path="/message.jsp"/>
+        </action>
+
+        <action path="/prevMessage" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.PrevMessageAction">
+            <exception key="error.message.notfound" path="folder" handler="edu.ufl.osg.webmail.ForwardingExceptionHandler" type="java.lang.IndexOutOfBoundsException"/>
+            <forward name="success" path="/message.jsp"/>
+        </action>
+
+        <action path="/printerFriendly" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.PrinterFriendlyAction">
+            <forward name="success" path="/printerFriendly.jsp"/>
+        </action>
+
+        <action path="/reportSpam" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.ReportSpamAction">
+        </action>
+
+        <action path="/reportHam" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.ReportHamAction">
+        </action>
+
+        <action path="/attachment" name="attachmentForm" scope="request" type="edu.ufl.osg.webmail.actions.AttachmentAction">
+            <forward name="success" path="/attachment.jsp"/>
+        </action>
+
+        <action path="/addressbook" type="edu.ufl.osg.webmail.actions.AddressBkAction" validate="false">
+            <forward name="success" path="/addressbook.jsp"/>
+        </action>
+
+        <action path="/addAddress" type="edu.ufl.osg.webmail.actions.CheckSessionAction" validate="false">
+            <forward name="success" path="/addAddress.jsp"/>
+        </action>
+
+        <action path="/saveAddress" name="addressForm" scope="request" input="addAddress" type="edu.ufl.osg.webmail.actions.SaveAddressAction">
+            <forward name="success" path="/addressbook.do"/>
+            <forward name="fail" path="/addAddress.do"/>
+        </action>
+
+        <action path="/deleteAddress" name="addressForm" scope="request" input="addressbook" type="edu.ufl.osg.webmail.actions.DeleteAddressAction" validate="false">
+            <forward name="success" path="/addressbook.do"/>
+            <forward name="fail" path="/addressbook.do"/>
+        </action>
+
+        <action path="/selectAddresses" name="messageForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.SelectAddressesAction">
+            <forward name="success" path="/selectAddresses.jsp"/>
+            <forward name="fail" path="/message.do"/>
+        </action>
+
+        <action path="/saveAddresses" name="addressesForm" scope="request" input="selectAddresses" type="edu.ufl.osg.webmail.actions.SaveAddressesAction">
+            <forward name="success" path="/message.do"/>
+            <forward name="fail" path="/selectAddresses.do"/>
+        </action>
+
+        <action path="/errorCopy" type="edu.ufl.osg.webmail.actions.CheckSessionAction" validate="false">
+            <forward name="success" path="/errorCopy.jsp"/>
+        </action>
+
+        <action path="/errorCopyToSent" type="edu.ufl.osg.webmail.actions.CheckSessionAction" validate="false">
+            <forward name="success" path="/errorCopyToSent.jsp"/>
+        </action>
+
+        <action path="/errorCopyToTrash" type="edu.ufl.osg.webmail.actions.CheckSessionAction" validate="false">
+            <forward name="success" path="/errorCopyToTrash.jsp"/>
+        </action>
+
+        <action path="/compose" name="composeForm" scope="request" validate="false" type="edu.ufl.osg.webmail.actions.ComposeAction">
+            <forward name="success" path="/compose.jsp"/>
+        </action>
+
+        <action path="/composeResume" name="composeForm" scope="request" validate="false" type="edu.ufl.osg.webmail.actions.ComposeResumeAction">
+            <forward name="success" path="/compose.jsp"/>
+        </action>
+
+        <action path="/forward" name="composeForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.ForwardAction">
+            <forward name="success" path="/compose.jsp"/>
+        </action>
+
+        <action path="/reply" name="composeForm" scope="request" input="message" type="edu.ufl.osg.webmail.actions.ReplyAction">
+            <forward name="success" path="/compose.jsp"/>
+        </action>
+
+        <action path="/modifyCompose" name="composeForm" scope="request" input="/compose.jsp" parameter="action" validate="false" type="edu.ufl.osg.webmail.actions.ModifyComposeAction">
+            <forward name="success" path="/compose.jsp"/>
+            <forward name="fail" path="/compose.jsp"/>
+        </action>
+
+        <action path="/send" name="composeForm" scope="request" validate="false" type="edu.ufl.osg.webmail.actions.SendAction" input="/compose.jsp">
+            <forward name="success" path="/folder.do?folder=INBOX"/>
+            <forward name="fail" path="/compose.jsp"/>
+        </action>
+
+        <action path="/errorBasic" forward="/errorBasic.jsp" validate="false"/>
+
+        <action path="/errorUncaught" forward="/errorUncaught.jsp" validate="false"/>
+
+        <action path="/errorLogout" type="edu.ufl.osg.webmail.actions.LogoutAction" validate="false">
+            <forward name="success" path="/errorLogout.jsp"/>
+        </action>
+
+        <action path="/noInbox" forward="/noInbox.jsp" validate="false"/>
+
+        <action path="/about" forward="/about.jsp" validate="false"/>
+
+        <action path="/help" forward="/help.jsp" validate="false"/>
+
+        <action path="/feedback" type="edu.ufl.osg.webmail.actions.CheckSessionAction" validate="false">
+            <forward name="success" path="/feedback.jsp"/>
+        </action>
+
+        <action path="/preferences" name="preferencesForm" scope="request" input="input" validate="true" type="edu.ufl.osg.webmail.actions.PreferencesAction">
+            <forward name="input" path="/preferences.jsp"/>
+            <forward name="success" path="/preferences.jsp"/>
+        </action>
+    </action-mappings>
+
+    <!-- ===================================== Controller Configuration -->
+
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor">
+        <set-property property="inputForward" value="true"/>
+    </controller>
+
+
+    <!-- ================================ Message Resources Definitions -->
+    <message-resources parameter="Messages"/>
+
+
+    <!-- ======================================= Plug Ins Configuration -->
+
+
+    <!-- ========== Tiles plugin ===================  -->
+    <!--												-->
+    <!--
+       This plugin initialize Tiles definition factory. This later can takes some
+       parameters explained here after. The plugin first read parameters from web.xml, then
+       overload them with parameters defined here. All parameters are optional.
+       The plugin should be declared in each struts-config file.
+         - definitions-config: (optional)
+              Specify configuration file names. There can be several comma
+              separated file names (default: ?? )
+         - definitions-debug: (optional)
+              Specify Tiles debug level.
+                O : no debug information
+                1 : debug information
+                2 : more debug information
+         - definitions-parser-details: (optional)
+              Specify Digester debug level. This value is passed to Digester
+                O : no debug information (default)
+                1 : debug information
+                2 : more debug information
+         - definitions-parser-validate: (optional)
+              Specify if xml parser should validate the Tiles configuration file.
+                true : validate. DTD should be specified in file header. (default)
+                false : no validation
+
+        The TilesPlugin class create one single definition factory shared by all struts
+        modules, even if the plugin is declared several times. Paths found in Tiles
+        definitions are relative to the main context.
+        <plug-in className="org.apache.struts.tiles.TilesPlugin">
+    -->
+    <plug-in className="edu.ufl.osg.webmail.WebMailTilesPlugin">
+        <set-property property="mimeTilesBase" value="message."/>
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+        <set-property property="definitions-debug" value="2"/>
+        <set-property property="definitions-parser-details" value="2"/>
+        <set-property property="definitions-parser-validate" value="true"/>
+    </plug-in>
+
+    <plug-in className="edu.ufl.osg.webmail.imap.IMAPPlugin">
+    <!--<plug-in className="edu.ufl.osg.webmail.imap.UFIMAPSPlugIn">-->
+        <!--
+          I don't know why 'domain' must be lowercase but 'SMTP' and 'IMAP' must
+          be uppercase.
+        -->
+        <set-property property="domain" value="ufl.edu"/>
+        <set-property property="SMTPHost" value="smtp.ufl.edu"/>
+        <set-property property="IMAPHost" value="imap.ufl.edu"/>
+
+        <!-- Socket connection pool size. -->
+        <set-property property="connectionPoolSize" value="2"/>
+        <!-- Socket connection timeout value in milliseconds. 90 seconds -->
+        <set-property property="connectionTimeout" value="90000"/>
+        <!-- Socket I/O timeout value in milliseconds -->
+        <set-property property="timeout" value="25000"/>
+
+    </plug-in>
+
+    <!--
+    <plug-in className="edu.ufl.osg.webmail.prefs.ReadOnlyPrefsPlugIn">
+        <set-property property="prefsFileName" value="/edu/ufl/osg/webmail/prefs/ReadOnlyPrefs.properties"/>
+    </plug-in>
+    -->
+    <!--<plug-in className="edu.ufl.osg.webmail.prefs.TransientPrefsPlugIn"/>-->
+
+    <plug-in className="edu.ufl.osg.webmail.prefs.UFDBPrefsPlugIn">
+        <set-property property="contextName" value="java:comp/env/jdbc/osg_public"/>
+        <set-property property="passwordEncoded" value="base64"/>
+    </plug-in>
+</struts-config>

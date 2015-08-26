@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd" version="2.4">
+
+    <display-name>GatorMail</display-name>
+
+    <!-- Point JSTL fmt:tags to the Messages resources. -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>Messages</param-value>
+    </context-param>
+
+    <context-param>
+        <description>
+            The JavaMail AUTH=PLAIN authentication name to use.
+            This should be defined in your container's context configuration.
+        </description>
+        <param-name>mail.imap.auth.plain.authentication</param-name>
+        <param-value>glwm-service</param-value>
+    </context-param>
+
+    <context-param>
+        <description>
+            The JavaMail AUTH=PLAIN authentication password to use.
+            This should be defined in your container's context configuration.
+        </description>
+        <param-name>mail.imap.auth.plain.password</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <context-param>
+        <description>The email address to forward a copy of false negative spam to.</description>
+        <param-name>report.spam.email</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <context-param>
+        <description>The email address to forward a copy of false positive spam to.</description>
+        <param-name>report.ham.email</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <!--
+    <filter>
+        <filter-name>GatorLinkAuth</filter-name>
+        <filter-class>edu.ufl.osg.gatorlink.auth.filter.GatorLinkAuthentication</filter-class>
+        <init-param>
+            <param-name>gatorlink.session.establish</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>GatorLinkAuth</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+    -->
+
+    <filter>
+        <filter-name>RequestTimer</filter-name>
+        <filter-class>edu.ufl.osg.webmail.util.RequestTimerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>RequestTimer</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>FolderCloser</filter-name>
+        <filter-class>edu.ufl.osg.webmail.util.FolderCloserFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FolderCloser</filter-name>
+        <url-pattern>*.do</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>LogRemoteIpAddress</filter-name>
+        <filter-class>edu.ufl.osg.webmail.util.LogRemoteIpAddressFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogRemoteIpAddress</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>action</servlet-name>
+        <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+
+        <init-param>
+            <param-name>config</param-name>
+            <param-value>/WEB-INF/struts-config.xml</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>0</param-value>
+        </init-param>
+
+        <init-param>
+            <param-name>detail</param-name>
+            <param-value>0</param-value>
+        </init-param>
+
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+
+    <!-- Standard Action Servlet Mapping -->
+    <servlet-mapping>
+        <servlet-name>action</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <session-config>
+        <session-timeout>60</session-timeout>
+    </session-config>
+
+    <!-- The Usual Welcome File List -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
+    </welcome-file-list>
+
+    <jsp-config>
+        <!-- JSTL Tag Library Descriptors -->
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/core</taglib-uri>
+            <taglib-location>/WEB-INF/c.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/fmt</taglib-uri>
+            <taglib-location>/WEB-INF/fmt.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/fn</taglib-uri>
+            <taglib-location>/WEB-INF/fn.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/sql</taglib-uri>
+            <taglib-location>/WEB-INF/sql.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>http://java.sun.com/jsp/jstl/x</taglib-uri>
+            <taglib-location>/WEB-INF/x.tld</taglib-location>
+        </taglib>
+
+        <!-- Struts Tag Library Descriptors -->
+        <taglib>
+            <taglib-uri>/tags/struts-bean</taglib-uri>
+            <taglib-location>/WEB-INF/struts-bean.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/struts-html</taglib-uri>
+            <taglib-location>/WEB-INF/struts-html.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/struts-logic</taglib-uri>
+            <taglib-location>/WEB-INF/struts-logic.tld</taglib-location>
+        </taglib>
+        <!--
+        <taglib>
+            <taglib-uri>/tags/struts-nested</taglib-uri>
+            <taglib-location>/WEB-INF/struts-nested.tld</taglib-location>
+        </taglib>
+        -->
+        <taglib>
+            <taglib-uri>/tags/struts-tiles</taglib-uri>
+            <taglib-location>/WEB-INF/struts-tiles.tld</taglib-location>
+        </taglib>
+
+        <taglib>
+            <taglib-uri>/tags/webmail</taglib-uri>
+            <taglib-location>/WEB-INF/GatorMail.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!-- Reference the JNDI DataSource from the Container -->
+    <resource-ref>
+        <description>Shared JNDI DataSource for OSG</description>
+        <res-ref-name>jdbc/osg_public</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <resource-ref>
+        <description>Manage Sieve Session Factory</description>
+        <res-ref-name>managesieve/SessionFactory</res-ref-name>
+        <res-type>edu.ufl.osg.managesieve.Session</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Unshareable</res-sharing-scope>
+    </resource-ref>
+</web-app>

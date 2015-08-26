@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <body>
+    <p>
+      GatorMail preferences. Preferences in GatorMail are implemented as
+      {@link java.util.Properties} backed by whatever you want.
+    </p>
+
+    <p>
+      Below is a list of properties and their meaning. Unless otherwise stated
+      it is assumed that each entry is a free form {@link java.lang.String}.
+    </p>
+
+    <dl>
+     <dt>compose.replyTo</dt>
+     <dd>
+       The address the user wants messages to be replied to. This must be in a
+       form acceptable to
+       {@link javax.mail.internet.InternetAddress#InternetAddress(String)}.
+     </dd>
+
+     <dt>compose.signature</dt>
+     <dd>The user's signature.</dd>
+
+     <dt>compose.X-Image-Url</dt>
+     <dd>
+      A URL to an image that represents the sender. The linked image should be
+      about the size of a "buddy icon" though there is no known standard
+      defining the size.
+     </dd>
+
+     <dt>folder.list.threading</dt>
+     <dd>
+       True if message threading should be turned on, else false. This value
+       must be parseable by {@link java.lang.Boolean#valueOf(String)}. 
+     </dd>
+
+     <dt>folder.list.count</dt>
+     <dd>
+       How many messages to list at once in the folder view. This must be
+       parseable by {@link java.lang.Integer#parseInt(String)}.
+     </dd>
+
+     <dt>folder.list.sort</dt>
+     <dd>The default message sort for the folder view.</dd>
+
+     <dt>message.junk.threshold</dt>
+     <dd>
+       Any messages with a junk score greater or equal to this threshold will
+       be flagged at junk. A value of zero means the junk threshold is
+       disabled. Default is 8. This must be parseable by
+       {@link java.lang.Integer#parseInt(String)}.
+     </dd>
+
+     <dt>user.login.last</dt>
+     <dd>
+       The time the user last logged in.  
+     </dd>
+
+     <dt>user.name</dt>
+     <dd>
+       The name of the user as she would like it displayed. This should not
+       contain any new line characters.
+     </dd>
+
+     <dt>view.header.hide</dt>
+     <dd>
+       True if the page header's should be hidden. This value
+       must be parseable by {@link java.lang.Boolean#valueOf(String)}.
+     </dd>
+
+    </dl>
+  </body>
+</html>
