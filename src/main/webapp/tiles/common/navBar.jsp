@@ -6,7 +6,7 @@
 <%@taglib uri="/tags/struts-bean" prefix="bean"%>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
  <tr bgcolor="#e6e6e6">
-  <td height="20" align="left" background="<html:rewrite page="/navbg.jpg"/>" bgcolor="e6e6e6" class="navElements">&nbsp;</td>
+  <td height="20" align="left" background="<html:rewrite page="/images/navbg.jpg"/>" bgcolor="e6e6e6" class="navElements">&nbsp;</td>
  </tr>
 
  <tr bgcolor="#e6e6e6">

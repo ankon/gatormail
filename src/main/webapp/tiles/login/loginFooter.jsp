@@ -8,7 +8,7 @@
  <html:link href="http://gatormail.sf.net/bugs">here</html:link>.
 </p>
 <hr align="center" width="300" size="1" noshade>
-<html:link href="http://www.ufl.edu/"><html:img page="/UFsig_small.gif" border="0"/></html:link>
+<html:link href="http://www.ufl.edu/"><html:img page="/images/UFsig_small.gif" border="0"/></html:link>
 <br/>
 <p class="copyright">
    Copyright &copy; 2002-2005 <a href="http://Sandy.McArthur.org/" style="color:gray;text-decoration:none">William A. McArthur, Jr.</a> <br/>

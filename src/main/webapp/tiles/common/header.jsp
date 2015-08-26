@@ -19,9 +19,9 @@
 %>
 <table class="header" width="100%" height="91" border="0" cellpadding="0" cellspacing="0">
  <tr>
-  <td rowspan="2" valign="middle" align="right"><html:img page="/spacer.gif" width="3" height="16" border="0"/></td>
+  <td rowspan="2" valign="middle" align="right"><html:img page="/images/spacer.gif" width="3" height="16" border="0"/></td>
 
-  <td width="180" rowspan="2"><html:link forward="inbox"><html:img page="/webMail-logoSmall.jpg" width="180" height="91" border="0"/></html:link></td>
+  <td width="180" rowspan="2"><html:link forward="inbox"><html:img page="/images/webMail-logoSmall.jpg" width="180" height="91" border="0"/></html:link></td>
 
   <%-- Don't fotget to bump the version number in the feedback forward of struts-config.xml --%>
   <td height="75" valign="bottom" class="version">v@VERSION@</td>
@@ -34,7 +34,7 @@
    <table border="0" cellpadding="2">
     <tr>
      <td align="center" valign="middle">
-      <html:link href="http://www.ufl.edu/"><html:img page="/UFsig_small.gif" width="139" height="34" border="0"/></html:link>
+      <html:link href="http://www.ufl.edu/"><html:img page="/images/UFsig_small.gif" width="139" height="34" border="0"/></html:link>
      </td>
     </tr>
 <%
@@ -53,10 +53,10 @@
    </table>
   </td>
 
-  <td rowspan="2" valign="middle" align="right"><html:img page="/spacer.gif" width="3" height="16" border="0"/></td>
+  <td rowspan="2" valign="middle" align="right"><html:img page="/images/spacer.gif" width="3" height="16" border="0"/></td>
  </tr>
  <tr>
-  <td height="16"><html:img page="/spacer.gif" width="30" height="16" border="0"/></td>
+  <td height="16"><html:img page="/images/spacer.gif" width="30" height="16" border="0"/></td>
  </tr>
 </table>
 <%

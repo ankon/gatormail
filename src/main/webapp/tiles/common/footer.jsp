@@ -26,7 +26,7 @@
 <%--
   <td width="100">
    <html:link href="http://jakarta.apache.org/struts/">
-    <html:img page="/struts-power-trans.gif" border="0" title="Powered by Struts"/>
+    <html:img page="/images/struts-power-trans.gif" border="0" title="Powered by Struts"/>
    </html:link>
   </td>
 --%>

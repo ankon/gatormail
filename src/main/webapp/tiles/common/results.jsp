@@ -19,7 +19,7 @@
 %>
  <tr>
   <td class="announcement">
-   <html:img page="/note.png" width="24" height="24" border="0"/>
+   <html:img page="/images/note.png" width="24" height="24" border="0"/>
    Check your
    <html:link forward="preferences" titleKey="link.preferences.title"><bean:message key="link.preferences"/></html:link>
    to take advantage of the new server side junk email filter which can automatically put email likely to be junk into
@@ -33,7 +33,7 @@
 %>
     <tr>
      <td class="alert">
-      <html:img page="/note.png" width="24" height="24" border="0"/>
+      <html:img page="/images/note.png" width="24" height="24" border="0"/>
          You have a GatorLink vacation auto responder set.
          Do not forget to disable this in your
          <html:link forward="preferences" titleKey="link.preferences.title"><bean:message key="link.preferences"/></html:link>
