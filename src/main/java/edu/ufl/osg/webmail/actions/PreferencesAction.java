@@ -125,11 +125,11 @@ public final class PreferencesAction extends Action {
                 vacationMessageChanged = true;
             }
 
-            {
+            Boolean junkSieveEnabled = prefsForm.getJunkSieveEnabled() != null ? prefsForm.getJunkSieveEnabled() : Boolean.FALSE;
+            Boolean vacationSieveEnabled = prefsForm.getVacationSieveEnabled() != null ? prefsForm.getVacationSieveEnabled() : Boolean.FALSE;
+            if (junkSieveEnabled.booleanValue() || vacationSieveEnabled.booleanValue()) {
                 final Session sieveSession = getManageSieveSessionFor(user.getUsername());
                 try {
-                    Boolean junkSieveEnabled = prefsForm.getJunkSieveEnabled() != null ? prefsForm.getJunkSieveEnabled() : Boolean.FALSE;
-                    Boolean vacationSieveEnabled = prefsForm.getVacationSieveEnabled() != null ? prefsForm.getVacationSieveEnabled() : Boolean.FALSE;
                     // Prevent scripts with silly junk threshold.
                     if (Integer.parseInt(junkThreshold) < 1) {
                         junkSieveEnabled =  Boolean.FALSE;
@@ -256,7 +256,7 @@ public final class PreferencesAction extends Action {
         return mapping.findForward("success");
     }
 
-    private void populateFormBeanFromPreferences(final PreferencesForm prefsForm, final Properties prefs, final User user) throws Exception {
+    private void populateFormBeanFromPreferences(final PreferencesForm prefsForm, final Properties prefs, final User user) {
         // Populate form bean from perferences.
         prefsForm.setUsername(prefs.getProperty("user.name"));
         prefsForm.setReplyTo(prefs.getProperty("compose.replyTo"));
@@ -275,13 +275,15 @@ public final class PreferencesAction extends Action {
         if (prefs.getProperty("view.header.hide") != null) {
             prefsForm.setHideHeader(Boolean.valueOf(prefs.getProperty("view.header.hide")));
         }
-        {
+        try {
             final Session sieveSession = getManageSieveSessionFor(user.getUsername());
             if (hasActiveGatorMailScript(sieveSession)) {
                 prefsForm.setJunkSieveEnabled(Boolean.valueOf(isGatorMailJunkScript(sieveSession)));
                 prefsForm.setVacationSieveEnabled(Boolean.valueOf(isGatorMailVacationScript(sieveSession)));
             }
             sieveSession.logout();
+        } catch (Exception e) {
+            // No support for that.
         }
     }
 
@@ -349,11 +351,15 @@ public final class PreferencesAction extends Action {
         return false;
     }
 
-    public static boolean hasActiveVacationScript(final HttpSession session) throws Exception {
+    public static boolean hasActiveVacationScript(final HttpSession session) {
         final User user = Util.getUser(session);
-        final Session sieveSession = getManageSieveSessionFor(user.getUsername());
+        try {
+            final Session sieveSession = getManageSieveSessionFor(user.getUsername());
 
-        return hasActiveGatorMailScript(sieveSession) && isGatorMailVacationScript(sieveSession);
+            return hasActiveGatorMailScript(sieveSession) && isGatorMailVacationScript(sieveSession);
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     private static void putNewComboSieveScript(final Session session, final String folder, final int threshold, final String message) throws Exception {
