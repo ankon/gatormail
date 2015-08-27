@@ -130,6 +130,7 @@
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>oscache</artifactId>
+			<!-- When changing the version also update src/main/webapp/WEB-INF/oscache.tld! -->
 			<version>2.4.1</version>
 			<exclusions>
 				<exclusion>

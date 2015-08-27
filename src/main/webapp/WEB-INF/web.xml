@@ -177,6 +177,12 @@
             <taglib-uri>/tags/webmail</taglib-uri>
             <taglib-location>/WEB-INF/GatorMail.tld</taglib-location>
         </taglib>
+
+        <!-- XXX: Point directly to the .jar file somehow? -->
+        <taglib>
+            <taglib-uri>http://www.opensymphony.com/oscache</taglib-uri>
+            <taglib-location>/WEB-INF/oscache.tld</taglib-location>
+        </taglib>
     </jsp-config>
 
     <!-- Reference the JNDI DataSource from the Container -->
