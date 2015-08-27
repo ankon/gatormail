@@ -73,6 +73,10 @@ public class DAOFactory {
         return addressBkDAO;
     }
 
+    public void setAddressBkDAO(AddressBkDAO addressBkDAO) {
+        this.addressBkDAO = addressBkDAO;
+    }
+
     /**
      * The Data Access Object for a user's address book.
      *
@@ -93,6 +97,10 @@ public class DAOFactory {
         if (userInfoDAO == null)
             userInfoDAO = new UserInfoDAO_Transient();
         return userInfoDAO;
+    }
+
+    public void setUserInfoDAO(UserInfoDAO userInfoDAO) {
+        this.userInfoDAO = userInfoDAO;
     }
 
     ////////////////////////////////////////////////////////////
