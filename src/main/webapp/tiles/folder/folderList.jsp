@@ -18,7 +18,7 @@
         request.setAttribute("currentRootFolder", currentRootFolder);
         final String fullName = currentRootFolder.getFullName();
 %>
-<oscache:cache key="<%= "folderList.jsp#" + ((Folder)request.getAttribute("folder")).getFullName() + "::" + fullName %>" scope="session" time="300" groups="mailStore">
+<oscache:cache key="<%= \"folderList.jsp#\" + ((Folder)request.getAttribute(\"folder\")).getFullName() + \"::\" + fullName %>" scope="session" time="300" groups="mailStore">
 <%
     String imageName = "/";
     if (currentRootFolder.getFullName().equals("INBOX")) {

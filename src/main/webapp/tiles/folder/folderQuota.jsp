@@ -77,7 +77,7 @@
           <div class="folderQuotaResourceFree" style="width:<c:out value="${resource.percentFree}"/>%;" title="<c:out value="${resource.name}"/> <c:out value="${resource.percentFree}"/>% free"></div>
         </div>
         <div class="folderQuotaMessage">
-         <bean:message key="folder.quota.message" arg0="<%= Long.toString(((QuotaBean.ResourceBean)pageContext.getAttribute("resource")).getUsage()) %>" arg1="<%= Long.toString(((QuotaBean.ResourceBean)pageContext.getAttribute("resource")).getLimit()) %>"/> 
+         <bean:message key="folder.quota.message" arg0="<%= Long.toString(((QuotaBean.ResourceBean)pageContext.getAttribute(\"resource\")).getUsage()) %>" arg1="<%= Long.toString(((QuotaBean.ResourceBean)pageContext.getAttribute(\"resource\")).getLimit()) %>"/>
         </div>
       </div>
 
