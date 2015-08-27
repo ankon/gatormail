@@ -68,8 +68,7 @@ public class DAOFactory {
      */
     public AddressBkDAO getAddressBkDAO() throws AddressBkDAOException {
         if (addressBkDAO == null) {
-            addressBkDAO = new AddressBkDAO_DB();
-            //addressBkDAO = new AddressBkDAO_Transient();
+            addressBkDAO = new AddressBkDAO_Transient();
         }
         return addressBkDAO;
     }
@@ -92,7 +91,7 @@ public class DAOFactory {
      */
     public UserInfoDAO getUserInfoDAO() throws UserInfoDAOException {
         if (userInfoDAO == null)
-            userInfoDAO = new UserInfoDAO_LDAP();
+            userInfoDAO = new UserInfoDAO_Transient();
         return userInfoDAO;
     }
 
