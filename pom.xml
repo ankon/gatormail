@@ -11,24 +11,25 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<javax.mail.version>1.5.4</javax.mail.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>mailapi</artifactId>
-			<version>1.5.4</version>
+			<version>${javax.mail.version}</version>
 		</dependency>
 		<!-- FIXME: Replace, currently some parts know about it -->
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>imap</artifactId>
-			<version>1.5.4</version>
+			<version>${javax.mail.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.mail</groupId>
 			<artifactId>smtp</artifactId>
-			<version>1.5.4</version>
+			<version>${javax.mail.version}</version>
 		</dependency>
 
 		<dependency>
