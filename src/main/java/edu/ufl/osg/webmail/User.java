@@ -62,7 +62,7 @@ public class User implements Serializable, HttpSessionBindingListener {
     private transient Store mailStore = null;
 
     private long boundTime = 0;
-    private volatile List recentAcitivity = new LinkedList();
+    private volatile List recentActivity = new LinkedList();
 
     /**
      * Creates a new instance of IMAPUser
@@ -277,12 +277,12 @@ public class User implements Serializable, HttpSessionBindingListener {
         }
         String fullRequestURL = requestURL.append(queryString).toString();
         final Activity activity = new Activity(fullRequestURL);
-        recentAcitivity.add(activity);
+        recentActivity.add(activity);
 
         // Trim if needed
-        if (recentAcitivity.size() > 5) {
+        if (recentActivity.size() > 5) {
             try {
-                recentAcitivity.remove(0);
+                recentActivity.remove(0);
             } catch (IndexOutOfBoundsException e) {
                 // ignore
             }
@@ -294,7 +294,7 @@ public class User implements Serializable, HttpSessionBindingListener {
     }
 
     public List getRecentAcitivity() {
-        return recentAcitivity;
+        return recentActivity;
     }
 
     public static class Activity implements Serializable {
