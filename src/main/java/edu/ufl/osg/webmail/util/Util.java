@@ -277,37 +277,6 @@ public class Util {
      * later.
      */
     public static class DateSort implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * <p>The implementor must ensure that <tt>sgn(compare(x, y)) ==
-         * -sgn(compare(y, x))</tt> for all <tt>x</tt> and <tt>y</tt>. (This
-         * implies that <tt>compare(x, y)</tt> must throw an exception if and
-         * only if <tt>compare(y, x)</tt> throws an exception.) </p>
-         *
-         * <p>The implementor must also ensure that the relation is transitive:
-         * <tt>((compare(x, y)&gt;0) &amp;&amp; (compare(y, z)&gt;0))</tt>
-         * implies <tt>compare(x, z)&gt;0</tt>. </p>
-         *
-         * <p>Finally, the implementer must ensure that <tt>compare(x,
-         * y)==0</tt> implies that <tt>sgn(compare(x, z))==sgn(compare(y,
-         * z))</tt> for all <tt>z</tt>. </p>
-         *
-         * <p>It is generally the case, but <i>not</i> strictly required that
-         * <tt>(compare(x, y)==0) == (x.equals(y))</tt>. Generally speaking, any
-         * comparator that violates this condition should clearly indicate this
-         * fact. The recommended language is "Note: this comparator imposes
-         * orderings that are inconsistent with equals." </p>
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is less
-         *         than, equal to, or greater than the
-         *         second.
-         */
         public int compare(final Object o1, final Object o2) {
             Date d1 = null;
             Date d2 = null;
@@ -326,59 +295,24 @@ public class Util {
                 me.printStackTrace();
             }
 
-            return d2.compareTo(d1);
+            // Sort messages without received date to the top
+            if (d2 == null) {
+                return d1 == null ? 0 : -1;
+            } else if (d1 == null) {
+                return 1;
+            } else {
+                return d2.compareTo(d1);
+            }
         }
     }
 
-    public static class DateSortU implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is greater
-         *         than, equal to, or less than the
-         *         second.
-         */
+    public static class DateSortU extends DateSort {
         public int compare(final Object o1, final Object o2) {
-            Date d1 = null;
-            Date d2 = null;
-
-            final Message m1 = (Message)o1;
-            final Message m2 = (Message)o2;
-
-            try {
-                d1 = m1.getReceivedDate();
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            try {
-                d2 = m2.getReceivedDate();
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            return d1.compareTo(d2);
+            return -super.compare(o1, o2);
         }
     }
 
     public static class SubjectSort implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is less
-         *         than, equal to, or greater than the
-         *         second.
-         */
         public int compare(final Object o1, final Object o2) {
             String d1 = null;
             String d2 = null;
@@ -392,62 +326,13 @@ public class Util {
                 d2 = m2.getSubject();
 
                 if (d1 != null) {
-                    d1 = d1.trim();
-
-                    boolean done = false;
-
-                    while (!done) {
-
-                        final String threadSubjectLC = d1.toLowerCase();
-
-                        if (threadSubjectLC.startsWith("re:") || threadSubjectLC.startsWith("fw:")) {
-                            d1 = d1.substring(3).trim();
-
-                        } else if (threadSubjectLC.startsWith("fwd:")) {
-                            d1 = d1.substring(4).trim();
-
-                        } else if (threadSubjectLC.startsWith("[fwd:") && d1.endsWith("]")) {
-                            d1 = d1.substring(5, d1.length() - 1).trim();
-
-                        } else if (threadSubjectLC.endsWith("(fwd)")) {
-                            d1 = d1.substring(0, d1.length() - 5).trim();
-
-                        } else {
-                            done = true;
-
-                        }
-                    }
+                    d1 = extractSubject(d1);
                 } else {
                     d1 = "";
                 }
 
                 if (d2 != null) {
-                    d2 = d2.trim();
-
-                    boolean done = false;
-
-                    while (!done) {
-
-                        final String threadSubjectLC = d2.toLowerCase();
-
-                        if (threadSubjectLC.startsWith("re:") || threadSubjectLC.startsWith("fw:")) {
-                            d2 = d2.substring(3).trim();
-
-                        } else if (threadSubjectLC.startsWith("fwd:")) {
-                            d2 = d2.substring(4).trim();
-
-                        } else if (threadSubjectLC.startsWith("[fwd:") && d2.endsWith("]")) {
-                            d2 = d2.substring(5, d2.length() - 1).trim();
-
-                        } else if (threadSubjectLC.endsWith("(fwd)")) {
-                            d2 = d2.substring(0, d2.length() - 5).trim();
-
-                        } else {
-                            done = true;
-
-                        }
-
-                    }
+                    d2 = extractSubject(d2);
 
                 } else {
                     d2 = "";
@@ -456,461 +341,131 @@ public class Util {
                 d1 = d1.toLowerCase();
                 d2 = d2.toLowerCase();
 
+                return d1.compareTo(d2);
             } catch (MessagingException me) {
-                me.printStackTrace();
+                throw new RuntimeException(me);
             }
+        }
 
-            return d1.compareTo(d2);
+		protected String extractSubject(String d1) {
+			String tmp = d1.trim();
+
+			boolean done = false;
+
+			while (!done) {
+			    final String threadSubjectLC = tmp.toLowerCase();
+
+			    if (threadSubjectLC.startsWith("re:") || threadSubjectLC.startsWith("fw:")) {
+			        tmp = tmp.substring(3).trim();
+			    } else if (threadSubjectLC.startsWith("fwd:")) {
+			        tmp = tmp.substring(4).trim();
+			    } else if (threadSubjectLC.startsWith("[fwd:") && d1.endsWith("]")) {
+			        tmp = tmp.substring(5, d1.length() - 1).trim();
+			    } else if (threadSubjectLC.endsWith("(fwd)")) {
+			        tmp = tmp.substring(0, d1.length() - 5).trim();
+			    } else {
+			        done = true;
+			    }
+			}
+			return d1;
+		}
+    }
+
+    public static class SubjectSortU extends SubjectSort {
+        public int compare(final Object o1, final Object o2) {
+            return -super.compare(o1, o2);
         }
     }
 
-    public static class SubjectSortU implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is greater
-         *         than, equal to, or less than the
-         *         second.
-         */
-
+    private static abstract class AbstractAddressSort implements Comparator {
         public int compare(final Object o1, final Object o2) {
-            String d1 = null;
-            String d2 = null;
+            Address[] d1 = extractAddresses((Message) o1);
+            Address[] d2 = extractAddresses((Message) o2);
 
-            final Message m1 = (Message)o1;
-            final Message m2 = (Message)o2;
+            if (d1 == null) {
+                return d2 == null ? 0 : -1;
+            } else if (d2 == null) {
+                return 1;
+            }
 
-            try {
-                d1 = m1.getSubject();
-                d2 = m2.getSubject();
+            if (d1.length == 0) {
+                return d2.length == 0 ? 0 : -1;
+            } else if (d2.length == 0) {
+                return 1;
+            }
 
-                if (d1 != null) {
-                    d1 = d1.trim();
+            for (int i = 0; i < d1.length; i++) {
+                String a = d1[i] == null ? null : getCompareAddress((InternetAddress) d1[i]);
+                String b = d2[i] == null ? null : getCompareAddress((InternetAddress) d2[i]);
 
-                    boolean done = false;
-
-                    while (!done) {
-
-                        final String threadSubjectLC = d1.toLowerCase();
-
-                        if (threadSubjectLC.startsWith("re:") || threadSubjectLC.startsWith("fw:")) {
-                            d1 = d1.substring(3).trim();
-
-                        } else if (threadSubjectLC.startsWith("fwd:")) {
-                            d1 = d1.substring(4).trim();
-
-                        } else if (threadSubjectLC.startsWith("[fwd:") && d1.endsWith("]")) {
-                            d1 = d1.substring(5, d1.length() - 1).trim();
-
-                        } else if (threadSubjectLC.endsWith("(fwd)")) {
-                            d1 = d1.substring(0, d1.length() - 5).trim();
-
-                        } else {
-                            done = true;
-
-                        }
+                if (a == null) {
+                    if (b == null) {
+                        // XXX: Can this ever happen? Why?
+                        return 0;
+                    } else {
+                        return -1;
                     }
+                } else if (b == null) {
+                    return 1;
                 } else {
-                    d1 = "";
-                }
-
-                if (d2 != null) {
-                    d2 = d2.trim();
-
-                    boolean done = false;
-
-                    while (!done) {
-
-                        final String threadSubjectLC = d2.toLowerCase();
-
-                        if (threadSubjectLC.startsWith("re:") || threadSubjectLC.startsWith("fw:")) {
-                            d2 = d2.substring(3).trim();
-
-                        } else if (threadSubjectLC.startsWith("fwd:")) {
-                            d2 = d2.substring(4).trim();
-
-                        } else if (threadSubjectLC.startsWith("[fwd:") && d2.endsWith("]")) {
-                            d2 = d2.substring(5, d2.length() - 1).trim();
-
-                        } else if (threadSubjectLC.endsWith("(fwd)")) {
-                            d2 = d2.substring(0, d2.length() - 5).trim();
-
-                        } else {
-                            done = true;
-
-                        }
-
+                    int result = a.compareTo(b);
+                    if (result != 0) {
+                        return result;
                     }
-
-                } else {
-                    d2 = "";
                 }
-
-                d1 = d1.toLowerCase();
-                d2 = d2.toLowerCase();
-
-            } catch (MessagingException me) {
-                me.printStackTrace();
-
             }
 
-            return d2.compareTo(d1);
-
+            return 0;
         }
 
-    }
-
-    public static class FromSort implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is less
-         *         than, equal to, or greater than the
-         *         second.
-         */
-        public int compare(final Object o1, final Object o2) {
-            Address[] d1 = null;
-            Address[] d2 = null;
-
-            final Message m1 = (Message)o1;
-
-            final Message m2 = (Message)o2;
-
-            int result = 0;
-
-            try {
-                d2 = m2.getFrom();
-            } catch (MessagingException me) {
-                me.printStackTrace();
+        protected String getCompareAddress(InternetAddress address) {
+            String result = address.getPersonal();
+            if (result == null) {
+                result = address.getAddress();
             }
-
-            try {
-                d1 = m1.getFrom();
-            } catch (MessagingException me) {
-                me.printStackTrace();
+            if (result != null) {
+                result = result.toLowerCase().replace(QUOTE, ' ').trim();
             }
-
-            if (d1 == null && d2 == null) return 0;
-
-            if (d1 == null && d2 != null) return -1;
-
-            if (d1 != null && d2 == null) return 1;
-
-            if (d1.length == 0 && d2.length == 0) return 0;
-
-            if (d1.length == 0 && d2.length != 0) return -1;
-
-            if (d1.length != 0 && d2.length == 0) return 1;
-
-            int i = 0;
-
-            while (d1.length > i && d2.length > i) {
-                final Object a = d1[i];
-                final Object b = d2[i];
-
-                if (a == null && b == null) return 0;
-                final InternetAddress internetAddressA = (InternetAddress)a;
-                final InternetAddress internetAddressB = (InternetAddress)b;
-                String aa = internetAddressA.getPersonal();
-                String bb = internetAddressB.getPersonal();
-
-                if (aa == null) {
-                    aa = internetAddressA.getAddress();
-                }
-
-                if (bb == null) {
-                    bb = internetAddressB.getAddress();
-                }
-
-                aa = aa.toLowerCase().replace(QUOTE, ' ').trim();
-                bb = bb.toLowerCase().replace(QUOTE, ' ').trim();
-
-                if (aa.compareTo(bb) == 0) {
-                    i++;
-
-                } else {
-                    result = aa.compareTo(bb);
-                    i = d1.length;
-                }
-            }
-
-            return result;
-        }
-    }
-
-    public static class FromSortU implements Comparator {
-
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is greater
-         *         than, equal to, or less than the
-         *         second.
-         */
-        public int compare(final Object o1, final Object o2) {
-            Address[] d1 = null;
-            Address[] d2 = null;
-
-            final Message m1 = (Message)o1;
-
-            final Message m2 = (Message)o2;
-
-            int result = 0;
-
-            try {
-                d1 = m1.getFrom();
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            try {
-                d2 = m2.getFrom();
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            if (d1 == null && d2 == null) return 0;
-
-            if (d1 == null && d2 != null) return 1;
-
-            if (d1 != null && d2 == null) return -1;
-
-            if (d1.length == 0 && d2.length == 0) return 0;
-
-            if (d1.length == 0 && d2.length != 0) return 1;
-
-            if (d1.length != 0 && d2.length == 0) return -1;
-
-            int i = 0;
-
-            while (d1.length > i && d2.length > i) {
-                final Object a = d1[i];
-                final Object b = d2[i];
-
-                if (a == null && b == null) return 0;
-                final InternetAddress internetAddressA = (InternetAddress)a;
-                final InternetAddress internetAddressB = (InternetAddress)b;
-                String aa = internetAddressA.getPersonal();
-                String bb = internetAddressB.getPersonal();
-
-                if (aa == null) {
-                    aa = internetAddressA.getAddress();
-                }
-
-                if (bb == null) {
-                    bb = internetAddressB.getAddress();
-                }
-
-                aa = aa.toLowerCase().replace(QUOTE, ' ').trim();
-                bb = bb.toLowerCase().replace(QUOTE, ' ').trim();
-
-                if (bb.compareTo(aa) == 0) {
-                    i++;
-
-                } else {
-                    result = bb.compareTo(aa);
-                    i = d1.length;
-                }
-            }
-
             return result;
         }
 
+        protected abstract Address[] extractAddresses(Message m);
     }
 
-    public static class ToSort implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is less
-         *         than, equal to, or greater than the
-         *         second.
-         */
+    public static class FromSort extends AbstractAddressSort {
+		@Override
+		protected Address[] extractAddresses(Message m) {
+			try {
+				return m.getFrom();
+			} catch (MessagingException e) {
+				return null;
+			}
+		}
+    }
+
+    public static class FromSortU extends FromSort {
         public int compare(final Object o1, final Object o2) {
-            Address[] d1 = null;
-            Address[] d2 = null;
-
-            final Message m1 = (Message)o1;
-            final Message m2 = (Message)o2;
-
-            int result = 0;
-
-            try {
-                d1 = m1.getRecipients(Message.RecipientType.TO);
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            try {
-                d2 = m2.getRecipients(Message.RecipientType.TO);
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            if (d1 == null && d2 == null) return 0;
-
-            if (d1 == null && d2 != null) return -1;
-
-            if (d1 != null && d2 == null) return 1;
-
-            if (d1.length == 0 && d2.length == 0) return 0;
-
-            if (d1.length == 0 && d2.length != 0) return -1;
-
-            if (d1.length != 0 && d2.length == 0) return 1;
-
-            int i = 0;
-
-            while (d1.length > i && d2.length > i) {
-                final Object a = d1[i];
-                final Object b = d2[i];
-
-                if (a == null && b == null) return 0;
-                final InternetAddress internetAddressA = (InternetAddress)a;
-                final InternetAddress internetAddressB = (InternetAddress)b;
-                String aa = internetAddressA.getPersonal();
-                String bb = internetAddressB.getPersonal();
-
-                if (aa == null) {
-                    aa = internetAddressA.getAddress();
-                }
-
-                if (bb == null) {
-                    bb = internetAddressB.getAddress();
-                }
-
-                aa = aa.toLowerCase().replace(QUOTE, ' ').trim();
-                bb = bb.toLowerCase().replace(QUOTE, ' ').trim();
-
-                if (aa.compareTo(bb) == 0) {
-                    i++;
-
-                } else {
-                    result = aa.compareTo(bb);
-                    i = d1.length;
-                }
-            }
-
-            return result;
+            return -super.compare(o1, o2);
         }
     }
 
-    public static class ToSortU implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is greater
-         *         than, equal to, or less than the
-         *         second.
-         */
+    public static class ToSort extends AbstractAddressSort {
+        protected Address[] extractAddresses(Message m) {
+            try {
+                return m.getRecipients(Message.RecipientType.TO);
+            } catch (MessagingException e) {
+                return null;
+            }
+        }
+    }
+
+    public static class ToSortU extends ToSort {
         public int compare(final Object o1, final Object o2) {
-            Address[] d1 = null;
-            Address[] d2 = null;
-
-            final Message m1 = (Message)o1;
-            final Message m2 = (Message)o2;
-
-            int result = 0;
-
-            try {
-                d1 = m1.getRecipients(Message.RecipientType.TO);
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            try {
-                d2 = m2.getRecipients(Message.RecipientType.TO);
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            if (d1 == null && d2 == null) return 0;
-
-            if (d1 == null && d2 != null) return 1;
-
-            if (d1 != null && d2 == null) return -1;
-
-            if (d1.length == 0 && d2.length == 0) return 0;
-
-            if (d1.length == 0 && d2.length != 0) return 1;
-
-            if (d1.length != 0 && d2.length == 0) return -1;
-
-            int i = 0;
-
-            while (d1.length > i && d2.length > i) {
-                final Object a = d1[i];
-                final Object b = d2[i];
-
-                if (a == null && b == null) return 0;
-                final InternetAddress internetAddressA = (InternetAddress)a;
-                final InternetAddress internetAddressB = (InternetAddress)b;
-                String aa = internetAddressA.getPersonal();
-                String bb = internetAddressB.getPersonal();
-
-                if (aa == null) {
-                    aa = internetAddressA.getAddress();
-                }
-
-                if (bb == null) {
-                    bb = internetAddressB.getAddress();
-                }
-
-                aa = aa.toLowerCase().replace(QUOTE, ' ').trim();
-                bb = bb.toLowerCase().replace(QUOTE, ' ').trim();
-
-                if (bb.compareTo(aa) == 0) {
-                    i++;
-
-                } else {
-                    result = bb.compareTo(aa);
-                    i = d1.length;
-
-                }
-            }
-
-            return result;
+            return -super.compare(o1, o2);
         }
     }
 
     public static class SizeSort implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is less
-         *         than, equal to, or greater than the
-         *         second.
-         */
         public int compare(final Object o1, final Object o2) {
 
             int d1 = 0;
@@ -937,42 +492,9 @@ public class Util {
         }
     }
 
-    public static class SizeSortU implements Comparator {
-        /**
-         * Compares its two arguments for order. Returns a negative integer,
-         * zero, or a positive integer as the first argument is less than, equal
-         * to, or greater than the second.
-         *
-         * @param o1 the first object to be compared.
-         * @param o2 the second object to be compared.
-         * @return a negative integer, zero, or a positive
-         *         integer as the first argument is greater
-         *         than, equal to, or less than the
-         *         second.
-         */
+    public static class SizeSortU extends SizeSort {
         public int compare(final Object o1, final Object o2) {
-
-            int d1 = 0;
-            int d2 = 0;
-
-            final Message m1 = (Message)o1;
-            final Message m2 = (Message)o2;
-
-            try {
-                d1 = m1.getSize();
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            try {
-                d2 = m2.getSize();
-            } catch (MessagingException me) {
-                me.printStackTrace();
-            }
-
-            if (d2 < d1) return -1;
-            else if (d1 == d2) return 0;
-            else return 1;
+            return -super.compare(o1, o2);
         }
     }
 
