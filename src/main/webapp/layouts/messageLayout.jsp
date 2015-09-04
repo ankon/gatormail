@@ -39,11 +39,7 @@
  <link rel="alternate" href="<html:rewrite forward="reportSpam" name="messageParams"/>" title="Report As Spam"/>
  <link rel="alternate" href="<html:rewrite forward="reportHam" name="messageParams"/>" title="Report As Not Spam"/>
  <link rel="alternate" href="<html:rewrite forward="rawMessage" name="messageParams"/>" title="Message Source"/>
-<%--
- XXX: Despite all sorts of recomendations I think this causes more problems
-    than it helps. -Sandy 7/23
- <html:base/>
---%>
+
  <link rel="stylesheet" type="text/css" href="<html:rewrite forward="CSS"/>"/>
 </head>
 <body>

@@ -8,7 +8,7 @@
    <bean:message key="site.title"/>
    <tiles:getAsString name="title"/>
  </title>
- <html:base/>
+
  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
  <link rel="start" href="<html:rewrite forward="INBOX"/>" title="INBOX"/>
  <link rel="help" href="<html:rewrite forward="help"/>" title="GatorMail Help"/>

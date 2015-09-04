@@ -16,7 +16,7 @@
  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
  <link rel="start" href="<html:rewrite forward="INBOX"/>" title="INBOX"/>
  <link rel="help" href="<html:rewrite forward="help"/>" title="GatorMail Help"/>
- <html:base/>
+
  <link rel="stylesheet" type="text/css" href="<html:rewrite forward="CSS"/>"/>
 </head>
 <body>

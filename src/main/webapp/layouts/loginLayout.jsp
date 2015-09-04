@@ -8,7 +8,7 @@
   <bean:message key="site.title"/>
   <tiles:getAsString name="title"/>
  </title>
- <html:base/>
+
  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
  <link rel="stylesheet" type="text/css" href="<html:rewrite forward="CSS"/>"/>
 <%-- // Useful for when we need to force people to connect to a new clone.
