@@ -98,30 +98,31 @@ public class DeleteMessagesAction extends FolderAction {
             logger.debug("deleteForever: " + deleteForever);
             final int numMessages = messageList.size();
 
-            Folder trashFolder = null;
             final HttpSession session = request.getSession();
-            try {
-                trashFolder = Util.getFolder(session, Constants.getTrashFolderFullname(session));
-                if (!deleteForever && // if deleteForever is true, don't copy messages into trash
-                        trashFolder != null && // if we are in the trash folder, don't bother
-                        !Constants.getTrashFolderFullname(session).equals(folder.getFullName())) {
+            if (!deleteForever) { // if deleteForever is true, don't copy messages into trash
+                Folder trashFolder = null;
+                try {
+                    trashFolder = Util.getFolder(session, Constants.getTrashFolderFullname(session));
+                    if (trashFolder != null && // if we are in the trash folder, don't bother
+                            !Constants.getTrashFolderFullname(session).equals(folder.getFullName())) {
 
-                    // sort messages from largest to smallest
-                    Collections.sort(messageList, deleteMessageSort);
+                        // sort messages from largest to smallest
+                        Collections.sort(messageList, deleteMessageSort);
 
-                    // throw it in the trash
-                    logger.debug("copying " + numMessages + " messages to Trash");
-                    final List unfinishedList = ActionsUtil.copyMessages(messageList, folder, trashFolder, errors);
-                    ActionsUtil.flushMailStoreGroupCache(session);
-                    if (unfinishedList.size() > 0) {
-                        request.setAttribute(Constants.MESSAGE_LIST, unfinishedList);
-                        request.setAttribute(Constants.DELETE_ACTION, "deleteMessages");
-                        saveErrors(request, errors);
-                        return mapping.findForward("errorCopyToTrash");
+                        // throw it in the trash
+                        logger.debug("copying " + numMessages + " messages to Trash");
+                        final List unfinishedList = ActionsUtil.copyMessages(messageList, folder, trashFolder, errors);
+                        ActionsUtil.flushMailStoreGroupCache(session);
+                        if (unfinishedList.size() > 0) {
+                            request.setAttribute(Constants.MESSAGE_LIST, unfinishedList);
+                            request.setAttribute(Constants.DELETE_ACTION, "deleteMessages");
+                            saveErrors(request, errors);
+                            return mapping.findForward("errorCopyToTrash");
+                        }
                     }
+                } finally {
+                    Util.releaseFolder(trashFolder); // clean up
                 }
-            } finally {
-                Util.releaseFolder(trashFolder); // clean up
             }
 
             // delete messages
