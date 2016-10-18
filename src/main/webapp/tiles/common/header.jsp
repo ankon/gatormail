@@ -21,7 +21,7 @@
  <tr>
   <td rowspan="2" valign="middle" align="right"><html:img page="/images/spacer.gif" width="3" height="16" border="0"/></td>
 
-  <td width="180" rowspan="2"><html:link forward="inbox"><html:img page="/images/webMail-logoSmall.jpg" width="180" height="91" border="0"/></html:link></td>
+  <td width="180" rowspan="2"><html:link forward="inbox"><html:img page="/images/logo.png" width="180" height="91" border="0"/></html:link></td>
 
   <td height="75" valign="bottom" class="version">v<%= prefs.getProperty("project.version", "DEVELOPMENT") %></td>
   <td rowspan="2" height="75" width="100%" valign="bottom" class="alertMessage" id="headerAlertMessage">

@@ -1,6 +1,6 @@
 <%@page contentType="text/html"%>
 <%@taglib uri="/tags/struts-html" prefix="html"%>
-<html:img page="/images/webMail-logo.jpg" border="0"/>
+<html:img page="/images/logo.png" border="0"/>
 <table border="0" width="600" id="announcement">
     <tr>
         <td class="alertMessage" id="loginAlertMessage">
