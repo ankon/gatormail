@@ -50,6 +50,7 @@ a:visited {
 .header .version { /* Version text next to the logo */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
+    white-space: nowrap;
     color: #CCCCCC;
 }
 
