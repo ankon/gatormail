@@ -31,11 +31,6 @@
 
   <td rowspan="2" valign="middle" align="right">
    <table border="0" cellpadding="2">
-    <tr>
-     <td align="center" valign="middle">
-      <html:link href="http://www.ufl.edu/"><html:img page="/images/UFsig_small.gif" width="139" height="34" border="0"/></html:link>
-     </td>
-    </tr>
 <%
     if (prefs != null) {
         final String username = user.getUsername();
