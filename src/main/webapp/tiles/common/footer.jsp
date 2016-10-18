@@ -1,4 +1,3 @@
-<%@page contentType="text/html" import="java.util.Date"%>
 <%@taglib uri="/tags/struts-html" prefix="html"%>
 <p>
 <table width="100%">
@@ -11,14 +10,6 @@
    <html:link href="http://www.ufl.edu/" style="color:gray;text-decoration:none">University of Florida</html:link> <br/>
    Copyright &copy; 2015-2016 <html:link href="https://github.com/ankon/">Andreas Kohn</html:link> <br/>
    <br/>
-<%
-    Long requestStartTime = (Long)request.getAttribute("requestStartTime");
-    if (requestStartTime != null) {
-    out.print("Request took: ");
-    out.print((System.currentTimeMillis() - requestStartTime.longValue()) / 1000f);
-    out.print(" seconds at " + new Date().toString());
-    }
-%>
   </td>
 <%--
   <td width="100">
