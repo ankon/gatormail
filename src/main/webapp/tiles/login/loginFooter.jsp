@@ -5,7 +5,7 @@
 </p>
 <p>
  To submit a bug report or request a feature, click
- <html:link href="http://gatormail.sf.net/bugs">here</html:link>.
+ <html:link href="https://github.com/ankon/gatormail/issues">here</html:link>.
 </p>
 <hr align="center" width="300" size="1" noshade>
 <html:link href="http://www.ufl.edu/"><html:img page="/images/UFsig_small.gif" border="0"/></html:link>

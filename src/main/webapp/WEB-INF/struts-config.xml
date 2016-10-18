@@ -116,8 +116,6 @@
         <forward name="selectAddresses" path="/selectAddresses.do"/>
         <forward name="send" path="/send.do"/>
         <forward name="feedback" path="/feedback.do"/>
-        <forward name="composeFeedback" path="/compose.do?to=consult@lists.ufl.edu&amp;subject=GatorMail+Webmail+Feedback+@VERSION@"/>
-        <forward name="helpdeskFeedback" path="/compose.do?to=helpdesk@ufl.edu&amp;subject=GatorMail+Webmail+Feedback+@VERSION@"/>
     </global-forwards>
 
 
