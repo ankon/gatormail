@@ -23,8 +23,7 @@
 
   <td width="180" rowspan="2"><html:link forward="inbox"><html:img page="/images/webMail-logoSmall.jpg" width="180" height="91" border="0"/></html:link></td>
 
-  <%-- Don't fotget to bump the version number in the feedback forward of struts-config.xml --%>
-  <td height="75" valign="bottom" class="version">v@VERSION@</td>
+  <td height="75" valign="bottom" class="version">v<%= prefs.getProperty("project.version", "DEVELOPMENT") %></td>
   <td rowspan="2" height="75" width="100%" valign="bottom" class="alertMessage" id="headerAlertMessage">
       <script type="text/javascript" src="alertMessage.js"></script>
       &nbsp;
