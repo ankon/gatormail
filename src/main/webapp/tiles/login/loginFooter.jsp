@@ -1,9 +1,6 @@
 <%@page contentType="text/html"%>
 <%@taglib uri="/tags/struts-html" prefix="html"%>
 <p>
-  Check the <a href="http://open-systems.ufl.edu/status/">current status</a> of Gatorlink services, including Webmail.
-</p>
-<p>
  To submit a bug report or request a feature, click
  <html:link href="https://github.com/ankon/gatormail/issues">here</html:link>.
 </p>
