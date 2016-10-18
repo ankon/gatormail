@@ -16,6 +16,4 @@
    <html:link href="http://www.cns.ufl.edu/" style="color:gray;text-decoration:none">Computing and Networking Services</html:link> /
    <html:link href="http://www.ufl.edu/" style="color:gray;text-decoration:none">University of Florida</html:link> <br/>
    Copyright &copy; 2015-2016 <html:link href="https://github.com/ankon/">Andreas Kohn</html:link> <br/>
-   Site maintained by <html:link href="http://open-systems.ufl.edu/">The Open Systems Group</html:link>
-   <br/> Last Modified: @DATE@
 </p>
