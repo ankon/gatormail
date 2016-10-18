@@ -94,7 +94,7 @@ public class DeleteMessagesAction extends FolderAction {
                 return mapping.findForward("folder");
             }
 
-            final boolean deleteForever = deleteMessagesForm.getDeleteForever();
+            boolean deleteForever = deleteMessagesForm.getDeleteForever();
             logger.debug("deleteForever: " + deleteForever);
             final int numMessages = messageList.size();
 
@@ -103,8 +103,8 @@ public class DeleteMessagesAction extends FolderAction {
                 Folder trashFolder = null;
                 try {
                     trashFolder = Util.getFolder(session, Constants.getTrashFolderFullname(session));
-                    if (trashFolder != null && // if we are in the trash folder, don't bother
-                            !Constants.getTrashFolderFullname(session).equals(folder.getFullName())) {
+                    // if we are in the trash folder, don't bother
+                    if (!Constants.getTrashFolderFullname(session).equals(folder.getFullName())) {
 
                         // sort messages from largest to smallest
                         Collections.sort(messageList, deleteMessageSort);
@@ -120,6 +120,9 @@ public class DeleteMessagesAction extends FolderAction {
                             return mapping.findForward("errorCopyToTrash");
                         }
                     }
+                } catch (MessagingException e) {
+                    logger.warn("Cannot find trash folder, forcing permanent deletion", e);
+                    deleteForever = true;
                 } finally {
                     Util.releaseFolder(trashFolder); // clean up
                 }
